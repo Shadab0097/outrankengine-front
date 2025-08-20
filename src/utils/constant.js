@@ -1,1 +1,1 @@
-export const BASE_URL = location.hostname === 'localhost' ? "http://localhost:1200/" : ""
+export const BASE_URL = location.hostname === 'localhost' ? "http://localhost:1200/" : "https://outrankengine.vercel.app/"
