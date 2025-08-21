@@ -125,7 +125,9 @@ const Login = () => {
                 setTimeout(() => navigate("/"), 600);
             }
         } catch (err) {
-            handleApiError(err);
+            // handleApiError(err);
+            setToast({ type: "error", message: err?.response?.data?.error });
+
         } finally {
             setSubmitting(false);
         }
