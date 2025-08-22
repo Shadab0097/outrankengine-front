@@ -167,6 +167,85 @@ const Login = () => {
         }
     };
 
+    // const handleLogin = async () => {
+    //     if (!validate()) return;
+    //     setSubmitting(true);
+    //     try {
+    //         const res = await axios.post(
+    //             BASE_URL + "login",
+    //             { emailId: formData.emailId, password: formData.password },
+    //             { withCredentials: true }  // Keep this for cookie support
+    //         );
+
+    //         if (res.status === 200) {
+    //             const { user, authToken } = res.data.data;
+
+    //             // Store token in localStorage (fallback for devices without cookie support)
+    //             localStorage.setItem('authToken', authToken);
+    //             localStorage.setItem('user', JSON.stringify(user));
+
+    //             // Set Authorization header for future requests
+    //             axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+
+    //             // Update Redux store
+    //             dispatch(addUser(user));  // Changed from res.data.data to user
+
+    //             setToast({ type: "success", message: "Signed in successfully" });
+    //             setTimeout(() => navigate("/"), 600);
+    //         }
+    //     } catch (err) {
+    //         setToast({ type: "error", message: err?.response?.data?.error });
+    //     } finally {
+    //         setSubmitting(false);
+    //     }
+    // };
+
+    // const handleSignUp = async () => {
+    //     if (!validate()) return;
+    //     setSubmitting(true);
+
+    //     try {
+    //         const res = await axios.post(
+    //             BASE_URL + "signup",
+    //             formData,
+    //             { withCredentials: true }  // Keep this for cookie support
+    //         );
+
+    //         console.log(res);
+
+    //         // Step 1: OTP sent
+    //         if (res.status === 200) {
+    //             setToast({ type: "success", message: "OTP sent successfully" });
+    //             setIsOtp(true);
+    //         }
+
+    //         // Step 2: Account created after OTP verification
+    //         if (res.status === 201) {
+    //             const { user, authToken } = res.data.data;
+
+    //             // Store token in localStorage (fallback for devices without cookie support)
+    //             localStorage.setItem('authToken', authToken);
+    //             localStorage.setItem('user', JSON.stringify(user));
+
+    //             // Set Authorization header for future requests
+    //             axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+
+    //             // Update Redux store
+    //             dispatch(addUser(user));  // Changed from res.data.data to user
+
+    //             setToast({ type: "success", message: "Account created successfully" });
+    //             setTimeout(() => navigate("/"), 600);
+    //         }
+    //     } catch (err) {
+    //         setToast({ type: "error", message: err?.response?.data?.error });
+    //         console.log(err);
+    //     } finally {
+    //         setSubmitting(false);
+    //     }
+    // };
+
+
+
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
         setFieldErrors((prev) => ({ ...prev, [e.target.name]: "" }));

@@ -42,18 +42,50 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
         } catch { }
     };
 
+    // const handleLogOut = async () => {
+    //     try {
+    //         const res = await axios.post(BASE_URL + 'logout', {}, { withCredentials: true });
+    //         if (res.status === 200) {
+    //             console.log('logout Successful');
+    //             navigate('/login');
+    //             dispatch(removeUSer());
+    //         }
+    //     } catch (err) {
+    //         console.log(err.message);
+    //     }
+    // };
+
     const handleLogOut = async () => {
         try {
-            const res = await axios.post(BASE_URL + 'logout', {}, { withCredentials: true });
-            if (res.status === 200) {
-                console.log('logout Successful');
-                navigate('/login');
-                dispatch(removeUSer());
-            }
-        } catch (err) {
+            // Call logout API to clear server-side cookie
+            await axios.post(BASE_URL + 'logout', {}, { withCredentials: true });
+
+            // Clear localStorage
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+
+            // Remove Authorization header
+            delete axios.defaults.headers.common['Authorization'];
+
+            // Clear Redux state
+            dispatch(removeUSer());
+
+            // Navigate to login
+            navigate('/login');
+
+            // setToast({ type: "success", message: "Logged out successfully" });
+        } catch (error) {
+            // Even if logout API fails, clear local data
             console.log(err.message);
+
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            delete axios.defaults.headers.common['Authorization'];
+            dispatch(removeUSer());
+            navigate('/login');
         }
     };
+
 
     return (
         <>
