@@ -1646,7 +1646,7 @@ function URLAnalyzer() {
               <div className="pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 text-center">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">Analyze Any Competitor URL</h1>
                 <p className="text-white/80 text-sm sm:text-base">
-                  Get keyword strategy, ranking factors, backlink opportunities, and a step-by-step implementation plan.
+                  Get keyword strategy, ranking factors, backlink opportunities, and a step-by-step implementation plan to Outrank the Competitor.
                 </p>
               </div>
 
