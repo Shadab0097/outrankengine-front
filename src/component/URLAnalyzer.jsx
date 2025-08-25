@@ -27,1429 +27,45 @@ import ListSection from "../component/ListSection";
 import PriorityMatrix from "../component/PriorityMatrix";
 import Timeline from "../component/Timeline";
 import AnalysisDashboard from "../compareComponent/AnalysisDashboard";
-
-// const data = {
-//   "remainingTokens": 2870,
-//   "analysisType": "comparison",
-//   "tokensCost": 40,
-//   "analyzedUrls": {
-//     "competitor": "https://www.jamiakhadijatulkubratrust.com/",
-//     "our": "https://www.anjumaneislahtrust.com/"
-//   },
-//   "comparison": {
-//     "competitorInsights": {
-//       "analysisSummary": {
-//         "competitorStrengths": "The competitor has a clear brand identity and a single, focused homepage that communicates their mission. Their primary strength is the implementation of a detailed 'EducationalOrganization' schema, which clearly defines them as an entity to Google and aids in local SEO and Knowledge Panel presence. The site also has clear calls-to-action for donations.",
-//         "competitorWeaknesses": "The website's most critical weakness is its single-page architecture. It uses anchor links for navigation, which prevents them from building topical authority on specific services (Education, Healthcare, etc.) or ranking for a wide range of non-branded keywords. Other weaknesses include a non-optimized title tag ('Home - ...'), outdated use of meta keywords, generic alt text on some images, and a lack of deep, informational content.",
-//         "rankingFactors": [
-//           "Strong local entity signals via schema.org markup (name, address, phone)",
-//           "Clear branding and domain name",
-//           "Mobile-friendly design",
-//           "Secure site (HTTPS)"
-//         ],
-//         "contentGaps": [
-//           "Dedicated pages for each service (Education Support, Healthcare, Shelter Programs).",
-//           "An 'About Us' page with history, mission, and detailed profiles of trustees/staff.",
-//           "A blog or news section for sharing updates, impact stories, and targeting informational keywords.",
-//           "Specific landing pages for different donation campaigns (e.g., 'Sponsor a Student', 'Zakat Fund').",
-//           "An FAQ page addressing common donor questions.",
-//           "Transparent financial reports or impact statements."
-//         ],
-//         "overallAssessment": "The competitor likely ranks for their brand name and highly localized queries due to strong entity signals. However, their single-page structure presents a massive opportunity. A multi-page website with dedicated, in-depth content for each of their services and target keywords can easily outrank them on a wide range of valuable terms and establish superior topical authority."
-//       },
-//       "targetKeywords": {
-//         "primaryKeywords": [
-//           "Islamic educational institution in Haryana",
-//           "Islamic welfare trust India",
-//           "Madrasa in Nuh Mewat",
-//           "Donate for Islamic education",
-//           "Zakat donation for charity"
-//         ],
-//         "longTailKeywords": [
-//           "support underprivileged students Islamic school",
-//           "healthcare services for rural communities in Haryana",
-//           "how to donate to a madrasa in India",
-//           "best Islamic trust for social work",
-//           "construction donation for mosque or school"
-//         ],
-//         "questionBasedKeywords": [
-//           "Where can I donate for Islamic education in India?",
-//           "How do Islamic welfare trusts work?",
-//           "What is the importance of Quran and Hadith education?",
-//           "How can I help build an Islamic school?"
-//         ],
-//         "semanticKeywords": [
-//           "non-profit organization",
-//           "charitable trust",
-//           "sadaqah jariyah",
-//           "community development",
-//           "orphan support",
-//           "spiritual guidance",
-//           "humanitarian aid"
-//         ],
-//         "lowCompetitionOpportunities": [
-//           "Islamic community center Punhana",
-//           "food distribution charity Nuh Mewat",
-//           "sponsor an orphan education in Haryana",
-//           "charity for healthcare in rural Haryana"
-//         ],
-//         "keywordDifficulty": [
-//           {
-//             "keyword": "Jamia Khadijatul Kubra",
-//             "difficulty": "Low"
-//           },
-//           {
-//             "keyword": "Madrasa in Nuh Mewat",
-//             "difficulty": "Low-Medium"
-//           },
-//           {
-//             "keyword": "Islamic education India",
-//             "difficulty": "Medium-High"
-//           },
-//           {
-//             "keyword": "Donate zakat online",
-//             "difficulty": "High"
-//           }
-//         ]
-//       },
-//       "contentStrategy": {
-//         "contentTypes": [
-//           "In-depth Service Pages (Pillar Pages)",
-//           "Blog Posts and Articles",
-//           "Impact Reports and Case Studies (student success stories)",
-//           "Video Testimonials and Project Updates",
-//           "Donation Campaign Landing Pages",
-//           "Team/Trustee Biography Pages"
-//         ],
-//         "contentFormat": [
-//           "Long-form articles (2000+ words) for pillar pages",
-//           "Infographics showing donation impact",
-//           "Photo galleries of events and students",
-//           "Downloadable annual reports (PDF)",
-//           "Short video documentaries"
-//         ],
-//         "contentDepth": "Create comprehensive pillar pages for each core service (e.g., 'Our Educational Programs'). These pages should cover curriculum, student life, impact, and how to support, acting as a central hub for that topic. Supporting blog posts should target long-tail keywords related to each pillar.",
-//         "uniqueAngles": [
-//           "A Day in the Life of a Student at Our Madrasa",
-//           "From Foundation to Future: A Visual Journey of Our Construction Project",
-//           "How Your ₹1500 Donation Provides a Month of Healthcare",
-//           "Interviews with our teachers on preserving traditional Islamic values"
-//         ],
-//         "expertiseSignals": [
-//           "Detailed biographies of founders, trustees, and senior teachers with their qualifications.",
-//           "Publishing detailed, data-driven annual impact reports.",
-//           "Featuring testimonials from students, parents, and community leaders.",
-//           "Showcasing affiliations with other respected organizations."
-//         ],
-//         "userIntentAlignment": [
-//           {
-//             "intent": "Informational",
-//             "content": "Blog posts answering questions about Islamic charity, education, and community issues."
-//           },
-//           {
-//             "intent": "Transactional",
-//             "content": "Dedicated, easy-to-use donation pages for specific campaigns (Zakat, School Building, etc.)."
-//           },
-//           {
-//             "intent": "Navigational",
-//             "content": "A clear, well-structured website that allows users to easily find the homepage and contact information."
-//           },
-//           {
-//             "intent": "Commercial Investigation",
-//             "content": "Detailed service pages and impact reports for users comparing different charities to support."
-//           }
-//         ],
-//         "contentClusterStrategy": [
-//           {
-//             "pillarPage": "/education",
-//             "clusterContent": [
-//               "/blog/importance-of-hadith-studies",
-//               "/blog/student-sponsorship-impact",
-//               "/our-curriculum"
-//             ]
-//           },
-//           {
-//             "pillarPage": "/community-welfare",
-//             "clusterContent": [
-//               "/healthcare-initiatives",
-//               "/food-distribution-program",
-//               "/shelter-programs",
-//               "/blog/the-role-of-charity-in-community-building"
-//             ]
-//           }
-//         ]
-//       },
-//       "onPageSEOSuggestions": {
-//         "titleTagOptimization": [
-//           "Homepage: Islamic Education & Welfare Trust in Haryana | [Your Org Name]",
-//           "Service Page: Quality Islamic Education for Children | [Your Org Name]",
-//           "Blog Post: How to Calculate Your Zakat for Education | [Your Org Name]"
-//         ],
-//         "metaDescriptions": [
-//           "Support our mission to provide quality Islamic education and vital community services in Nuh, Haryana. Learn how your donation can empower futures. Donate today.",
-//           "Discover our comprehensive Quran and Hadith programs. We offer scholarships and support to over 500 students annually. See our impact and get involved."
-//         ],
-//         "headerStructure": [
-//           "Use one unique H1 tag per page that targets the primary keyword (e.g., H1: 'Our Community Healthcare Initiatives').",
-//           "Use H2 and H3 tags to structure content logically, targeting secondary and long-tail keywords (e.g., H2: 'Free Medical Camps', H3: 'Dental Check-ups')."
-//         ],
-//         "internalLinking": [
-//           "Create a silo structure. Link from pillar pages down to specific blog posts and vice-versa using descriptive anchor text.",
-//           "Link contextually within body copy, e.g., when mentioning 'healthcare' in a blog post, link to the main healthcare service page."
-//         ],
-//         "schemaMarkup": [
-//           "Use 'EducationalOrganization' and 'LocalBusiness' on the homepage/contact page.",
-//           "Use 'Article' schema for all blog posts.",
-//           "Use 'FAQPage' schema on relevant pages to capture question-based queries.",
-//           "Use 'Event' schema for fundraising dinners or community events."
-//         ],
-//         "urlStructure": [
-//           "Use short, descriptive, keyword-rich URLs.",
-//           "Example: yoursite.com/islamic-education-programs/",
-//           "Example: yoursite.com/donate/zakat-fund/"
-//         ],
-//         "imageOptimization": [
-//           "Use original, high-quality photos instead of stock images to build E-E-A-T.",
-//           "Compress all images to improve page speed.",
-//           "Use descriptive filenames (e.g., 'students-in-classroom-nuh-haryana.jpg').",
-//           "Write detailed, descriptive alt text for all images."
-//         ],
-//         "contentStructure": [
-//           "Break up long text with headings, short paragraphs, bullet points, and blockquotes.",
-//           "Use tables to display data, such as donation tiers and their impact.",
-//           "Embed relevant videos and image galleries to increase engagement."
-//         ]
-//       },
-//       "backlinkStrategy": {
-//         "highAuthorityTargets": [
-//           "Local news websites (e.g., The Tribune India, Haryana-specific news portals)",
-//           "Islamic scholarship and educational websites",
-//           "Reputable non-profit directories (e.g., GuideStar India)",
-//           "Blogs focused on charity, non-profits, and Islamic finance"
-//         ],
-//         "linkBuildingTactics": [
-//           "Digital PR: Pitch stories to local media about construction milestones, student achievements, or community events.",
-//           "Guest Posting: Write articles for relevant blogs on topics like 'The Importance of Sadaqah Jariyah'.",
-//           "Resource Link Building: Create a valuable resource (e.g., 'A Guide to Islamic Charities in North India') and promote it.",
-//           "Unlinked Brand Mentions: Find where your organization is mentioned online and request a link."
-//         ],
-//         "contentForLinkEarning": [
-//           "An annual, data-rich 'State of Education in Mewat' report.",
-//           "A powerful video documentary showcasing a student's success story.",
-//           "High-quality infographics detailing how donations are utilized.",
-//           "A comprehensive guide on 'Zakat: Calculation and Distribution'."
-//         ],
-//         "digitalPROpportunities": [
-//           "Announce the launch of a new program (e.g., a new wing for girls' education).",
-//           "Publish a press release about a successful fundraising campaign.",
-//           "Partner with a local business for a CSR initiative and co-promote.",
-//           "Host a significant community event and invite local media."
-//         ],
-//         "competitorBacklinkGaps": "The competitor likely has very few high-authority, editorially-given backlinks due to their lack of link-worthy content. Focus on acquiring links from national-level non-profit and educational domains, an area they are almost certainly neglecting."
-//       },
-//       "technicalSEO": {
-//         "coreWebVitals": [
-//           "Optimize images (compress, use next-gen formats like WebP).",
-//           "Defer non-critical JavaScript and CSS.",
-//           "Enable browser caching and use a Content Delivery Network (CDN).",
-//           "Aim for LCP < 2.5s, INP < 200ms, CLS < 0.1."
-//         ],
-//         "mobileOptimization": [
-//           "Ensure a responsive design with large, easy-to-tap buttons, especially for donation forms.",
-//           "Test the user journey on various mobile devices to ensure a seamless experience.",
-//           "Prioritize mobile page speed."
-//         ],
-//         "siteSpeed": [
-//           "Choose a reliable, fast hosting provider.",
-//           "Minimize HTTP requests by combining files.",
-//           "Use server-side caching."
-//         ],
-//         "crawlability": [
-//           "Create and submit an XML sitemap to Google Search Console.",
-//           "Implement a logical breadcrumb navigation.",
-//           "Ensure the robots.txt file is not blocking any important resources."
-//         ],
-//         "indexingOptimization": [
-//           "Use canonical tags correctly on all pages to avoid duplicate content issues.",
-//           "Use Google Search Console's URL Inspection tool to check indexing status.",
-//           "Ensure a clean site architecture that's easy for Googlebot to follow."
-//         ],
-//         "structuredData": [
-//           "Implement a wider range of schema beyond 'EducationalOrganization', including 'LocalBusiness', 'Article', 'FAQPage', and 'BreadcrumbList' to provide more context to search engines."
-//         ],
-//         "securityEnhancements": [
-//           "Implement strong security headers (CSP, HSTS).",
-//           "Ensure the donation payment gateway is secure and trusted.",
-//           "Regularly update all software and plugins."
-//         ]
-//       },
-//       "additionalOpportunities": {
-//         "eatSignals": [
-//           "Create a dedicated 'Our Team' page with detailed bios and photos of trustees, founders, and key staff.",
-//           "Prominently display testimonials and success stories.",
-//           "Showcase any media mentions, awards, or certifications.",
-//           "Be transparent about the organization's history and funding on the 'About Us' page."
-//         ],
-//         "localSEOTactics": [
-//           "Create and fully optimize a Google Business Profile (GBP) for the physical address.",
-//           "Encourage reviews on GBP from community members and supporters.",
-//           "Build local citations by getting listed in local online directories.",
-//           "Embed a Google Map on the contact page."
-//         ],
-//         "socialSignals": [
-//           "Maintain active profiles on relevant social media platforms (e.g., Facebook, Instagram).",
-//           "Regularly share updates, photos, and videos of your work to build a community and drive traffic.",
-//           "Run targeted social media ads for fundraising campaigns."
-//         ],
-//         "aiContentOptimization": [
-//           "Use AI tools for keyword research, topic ideation, and creating content outlines.",
-//           "CRITICAL: Ensure all content is written or heavily edited by a human expert to reflect genuine Experience, Expertise, and Trustworthiness. Avoid publishing generic, unverified AI-generated text."
-//         ],
-//         "featuredSnippetTargets": [
-//           "Create 'How-to' and 'What-is' blog posts.",
-//           "Use Q&A formatting within content and use FAQ schema.",
-//           "Provide clear, concise, list-based or table-based answers to common questions at the top of relevant pages."
-//         ],
-//         "voiceSearchOptimization": [
-//           "Focus on long-tail, conversational keywords and questions.",
-//           "Ensure the Google Business Profile information (address, phone, hours) is accurate.",
-//           "Structure content to provide direct answers to questions."
-//         ],
-//         "competitiveAdvantages": [
-//           "Develop superior topical authority with a multi-page, content-rich website.",
-//           "Build stronger E-E-A-T signals through transparency, team bios, and impact reporting.",
-//           "Target a much broader set of informational and long-tail keywords that the competitor cannot.",
-//           "Create diverse, link-worthy content to build a stronger backlink profile."
-//         ]
-//       },
-//       "implementationPlan": {
-//         "quickWins": [
-//           "Set up Google Analytics and Search Console.",
-//           "Create and optimize a Google Business Profile.",
-//           "Develop a 5-page starter website (Home, About, Services Hub, Donate, Contact).",
-//           "Perform basic on-page SEO for these initial pages."
-//         ],
-//         "mediumTermGoals": [
-//           "Publish 2-3 in-depth pillar pages for core services.",
-//           "Write and publish 8-10 supporting blog posts targeting long-tail keywords.",
-//           "Implement advanced schema markup (FAQ, Article, etc.).",
-//           "Begin local citation building and outreach to 'low-hanging fruit' backlink targets."
-//         ],
-//         "longTermStrategy": [
-//           "Continuously publish high-quality content based on a content calendar.",
-//           "Launch a proactive Digital PR campaign to earn high-authority links.",
-//           "Create and promote an annual impact report to build trust and earn links.",
-//           "Analyze performance data quarterly to refine the strategy."
-//         ],
-//         "priorityMatrix": [
-//           {
-//             "task": "Website Architecture & Core Pages",
-//             "impact": "High",
-//             "effort": "High"
-//           },
-//           {
-//             "task": "Google Business Profile Optimization",
-//             "impact": "High",
-//             "effort": "Low"
-//           },
-//           {
-//             "task": "Pillar Content Creation",
-//             "impact": "High",
-//             "effort": "High"
-//           },
-//           {
-//             "task": "Ongoing Blog Content",
-//             "impact": "Medium",
-//             "effort": "Medium"
-//           },
-//           {
-//             "task": "High-Authority Link Building",
-//             "impact": "High",
-//             "effort": "High"
-//           },
-//           {
-//             "task": "Local Citation Building",
-//             "impact": "Medium",
-//             "effort": "Low"
-//           }
-//         ],
-//         "estimatedTimeline": [
-//           "Months 1-2: Foundational setup, keyword research, and core site development.",
-//           "Months 3-6: Aggressive content creation (pillar and cluster pages), on-page optimization, and initial outreach.",
-//           "Months 7-12: Scale link-building efforts, analyze rankings, and expand content based on performance."
-//         ],
-//         "requiredResources": [
-//           "SEO Strategist/Consultant",
-//           "Web Developer",
-//           "Content Writer (with subject matter expertise)",
-//           "Digital PR/Outreach Specialist"
-//         ]
-//       }
-//     },
-//     "ourInsights": {
-//       "analysisSummary": {
-//         "competitorStrengths": "The competitor has a clear, branded domain name and a simple, likely fast-loading single-page design. The core mission is stated upfront, and images utilize alt text. The primary strength is its offline brand identity, not its online SEO execution.",
-//         "competitorWeaknesses": "The website architecture is a single page, which severely limits its ability to rank for diverse keywords. It has no meta description, a non-keyword-optimized title tag, and lacks any structured data. All internal links are anchor links to the same page, preventing the flow of link equity and the development of topical authority. The content is very thin, lacks depth, and relies on generic stock photos, which diminishes E-E-A-T signals.",
-//         "rankingFactors": [
-//           "Branded Search Presence: Ranks primarily for its own name, 'Anjuman-e-Islah'.",
-//           "Simplicity/Page Speed: The single-page design might contribute to good Core Web Vitals scores.",
-//           "Clear Thematic Focus: The page is clearly about being an 'educational and welfare trust for underprivileged children'."
-//         ],
-//         "contentGaps": [
-//           "Dedicated Program/Service Pages: No in-depth pages for 'Education Programs', 'Healthcare Support', or 'Community Development'.",
-//           "Blog/News Section: Lacks articles, success stories, impact reports, or updates on their work.",
-//           "Trust-Building Content: No detailed 'About Us' with team bios, financial transparency reports, or testimonials.",
-//           "FAQ Section: No page addressing common questions from donors, volunteers, or beneficiaries."
-//         ],
-//         "overallAssessment": "The competitor's SEO profile is extremely weak and highly vulnerable. It functions as a digital brochure, ranking only for its brand name. There is a massive opportunity to outrank them on virtually all non-branded keywords by creating a content-rich, multi-page website built on fundamental SEO principles and strong E-E-A-T signals. They are not actively competing in the SEO space."
-//       },
-//       "targetKeywords": {
-//         "primaryKeywords": [
-//           "educational charity [City]",
-//           "underprivileged children education",
-//           "donate for child education",
-//           "child education NGO [City]",
-//           "welfare trust for education"
-//         ],
-//         "longTailKeywords": [
-//           "how to sponsor a child's education in [City]",
-//           "best charity to donate for education",
-//           "non-profit organizations for underprivileged students",
-//           "support education for poor children",
-//           "local NGO for community development"
-//         ],
-//         "questionBasedKeywords": [
-//           "Where can I donate for children's education?",
-//           "How can I help unprivileged students?",
-//           "What is the impact of sponsoring a child?",
-//           "Which NGOs are working for education in [City]?"
-//         ],
-//         "semanticKeywords": [
-//           "non-profit",
-//           "social welfare",
-//           "community support",
-//           "student sponsorship",
-//           "charitable trust",
-//           "empowerment",
-//           "philanthropy"
-//         ],
-//         "lowCompetitionOpportunities": [
-//           "volunteer for education NGO [City]",
-//           "corporate sponsorship for local schools",
-//           "donate school supplies charity [City]",
-//           "local healthcare support charity"
-//         ],
-//         "keywordDifficulty": [
-//           {
-//             "keyword": "educational charity [City]",
-//             "difficulty": "Low"
-//           },
-//           {
-//             "keyword": "underprivileged children education",
-//             "difficulty": "Low-Medium"
-//           },
-//           {
-//             "keyword": "donate for child education",
-//             "difficulty": "Medium"
-//           }
-//         ]
-//       },
-//       "contentStrategy": {
-//         "contentTypes": [
-//           "In-depth Program Pages",
-//           "Blog Posts with Success Stories",
-//           "Annual Impact Reports (Web & PDF)",
-//           "Video Testimonials",
-//           "Infographics on Donation Impact",
-//           "Comprehensive FAQ Page"
-//         ],
-//         "contentFormat": [
-//           "Long-form articles (>1200 words)",
-//           "Case studies",
-//           "Photo galleries (using real photos)",
-//           "Short-form video",
-//           "How-to guides for donors/volunteers"
-//         ],
-//         "contentDepth": "Create dedicated pages for each program and service, going into detail about the methodology, impact, and how people can get involved. Each page should be a comprehensive resource, far exceeding the competitor's one-sentence descriptions.",
-//         "uniqueAngles": [
-//           "Transparency Hub: A section dedicated to financial reports and donation impact tracking.",
-//           "A Day in the Life: Follow a student or teacher to showcase the real-world impact.",
-//           "Expert Q&A: Feature interviews with board members or educators on key issues.",
-//           "Community Spotlight: Highlight local businesses or volunteers who support the cause."
-//         ],
-//         "expertiseSignals": [
-//           "Detailed 'About Us' page with history, mission, and photos/bios of founders and board members.",
-//           "Publish official registration numbers and tax-exemption certificates.",
-//           "Feature testimonials from beneficiaries, donors, and community leaders.",
-//           "Author bylines on blog posts from staff members."
-//         ],
-//         "userIntentAlignment": [
-//           {
-//             "intent": "Informational",
-//             "content": "Blog posts, impact reports, and detailed program pages explaining the cause and the organization's work."
-//           },
-//           {
-//             "intent": "Transactional",
-//             "content": "A clear, secure, and multi-option 'Donate' page. 'Sponsor a Child' and 'Volunteer' application forms."
-//           },
-//           {
-//             "intent": "Navigational",
-//             "content": "Clear 'Contact Us' page with map and address, 'About Us', and an easy-to-navigate site structure for users searching for the brand."
-//           }
-//         ],
-//         "contentClusterStrategy": [
-//           {
-//             "pillarPage": "The Ultimate Guide to Supporting Child Education in [City]",
-//             "clusterContent": [
-//               "Blog: The Impact of a Single Donation on a Child's Future",
-//               "Blog: How We Ensure Your Donation Reaches the Right Child",
-//               "Success Story: From Underprivileged Student to University Scholar",
-//               "Program Page: Our Academic Sponsorship Program"
-//             ]
-//           }
-//         ]
-//       },
-//       "onPageSEOSuggestions": {
-//         "titleTagOptimization": [
-//           "Format: [Primary Keyword] | [Brand Name]",
-//           "Example Homepage: 'Support Child Education in [City] | Your Trust Name'",
-//           "Example Program Page: 'Our Healthcare Support Programs | Your Trust Name'"
-//         ],
-//         "metaDescriptions": [
-//           "Craft unique, compelling descriptions (150-160 characters) for each page.",
-//           "Include a primary keyword and a strong call-to-action (e.g., 'Learn how you can change a life today.')"
-//         ],
-//         "headerStructure": [
-//           "Use one unique H1 per page, containing the main keyword.",
-//           "Structure content logically with H2s for main sections and H3s for sub-sections.",
-//           "Example H2s: 'Our Mission in Action', 'How Your Donation Helps', 'Meet Our Students'"
-//         ],
-//         "internalLinking": [
-//           "Develop a multi-page site structure to allow for contextual internal linking.",
-//           "Link from blog posts to relevant program and donation pages.",
-//           "Link program pages to related success stories."
-//         ],
-//         "schemaMarkup": [
-//           "Implement `Organization` or `NGO` schema on the homepage.",
-//           "Use `Article` schema for blog posts.",
-//           "Use `FAQPage` schema on the FAQ page.",
-//           "Use `Event` schema for fundraising events."
-//         ],
-//         "urlStructure": [
-//           "Use clean, descriptive, keyword-rich URLs.",
-//           "Example: `yourdomain.com/our-programs/education-sponsorship`"
-//         ],
-//         "imageOptimization": [
-//           "Use authentic photos of your work, not stock images.",
-//           "Use descriptive alt text for all images (e.g., 'A sponsored student receiving new textbooks from our trust').",
-//           "Compress images to ensure fast page load times.",
-//           "Use keyword-rich file names (e.g., 'child-education-ngo-city.jpg')."
-//         ],
-//         "contentStructure": [
-//           "Break up text with short paragraphs, bullet points, and numbered lists.",
-//           "Use bold and italics to emphasize key points.",
-//           "Embed relevant images and videos to increase engagement.",
-//           "Include clear Call-to-Action buttons throughout the content."
-//         ]
-//       },
-//       "backlinkStrategy": {
-//         "highAuthorityTargets": [
-//           "Local news media websites (for PR outreach).",
-//           "Reputable charity and non-profit directories (e.g., GuideStar, CharityNavigator).",
-//           "Local university websites (e.g., social work or education departments).",
-//           "Blogs focused on education, parenting, and social good."
-//         ],
-//         "linkBuildingTactics": [
-//           "Digital PR: Pitch success stories and impact data to local journalists.",
-//           "Guest Posting: Write articles for relevant blogs on topics like 'The Importance of Community Support for Education'.",
-//           "Resource Link Building: Create a valuable resource page (e.g., 'Free Educational Resources for Low-Income Families') and promote it.",
-//           "Local Sponsorships: Sponsor local school or community events to get brand mentions and links."
-//         ],
-//         "contentForLinkEarning": [
-//           "An annual 'State of Education for Underprivileged Children in [Region]' report with original data.",
-//           "A compelling infographic visualizing the 'journey of a donation'.",
-//           "A free scholarship or grant program that educational institutions will link to."
-//         ],
-//         "digitalPROpportunities": [
-//           "Partner with local businesses for a co-branded fundraising campaign.",
-//           "Issue press releases for major milestones (e.g., '1000th Student Sponsored').",
-//           "Host a community event and invite local media to cover it."
-//         ],
-//         "competitorBacklinkGaps": "The competitor likely has a very weak backlink profile, possibly limited to a few local directory listings. A proactive strategy focused on acquiring even a handful of high-quality, relevant links will create a significant competitive advantage."
-//       },
-//       "technicalSEO": {
-//         "coreWebVitals": [
-//           "Choose a modern, lightweight CMS and theme.",
-//           "Optimize images and leverage lazy loading.",
-//           "Minimize render-blocking JavaScript and CSS.",
-//           "Aim for LCP below 2.5s, INP below 200ms, and CLS below 0.1."
-//         ],
-//         "mobileOptimization": [
-//           "Implement a responsive design that provides an excellent user experience on all screen sizes.",
-//           "Ensure tap targets are large enough and content is readable without zooming."
-//         ],
-//         "siteSpeed": [
-//           "Utilize a content delivery network (CDN).",
-//           "Enable browser caching and Gzip compression.",
-//           "Select a reliable, fast hosting provider."
-//         ],
-//         "crawlability": [
-//           "Create and submit an XML sitemap to Google Search Console.",
-//           "Use a logical `robots.txt` file that doesn't block important resources.",
-//           "Ensure a clean, flat site architecture."
-//         ],
-//         "indexingOptimization": [
-//           "Regularly check Google Search Console for crawl errors or indexing issues.",
-//           "Use canonical tags correctly to avoid duplicate content.",
-//           "Ensure all key pages are set to 'index, follow'."
-//         ],
-//         "structuredData": [
-//           "Implement comprehensive schema markup (NGO, Article, FAQ, Event) to enhance SERP visibility and provide context to search engines."
-//         ],
-//         "securityEnhancements": [
-//           "Implement HTTPS across the entire site with a valid SSL certificate.",
-//           "Keep all platform software and plugins updated."
-//         ]
-//       },
-//       "additionalOpportunities": {
-//         "eatSignals": [
-//           "Experience: Use real photos and videos of your work. Feature first-hand stories from beneficiaries.",
-//           "Expertise: Showcase the qualifications of your leadership team and program managers.",
-//           "Authoritativeness: Actively seek media mentions, awards, and partnerships with established institutions.",
-//           "Trustworthiness: Be transparent. Clearly display contact information, address, registration details, and financial reports. Have a clear privacy policy."
-//         ],
-//         "localSEOTactics": [
-//           "Create and fully optimize a Google Business Profile for your physical address.",
-//           "Encourage reviews from volunteers and donors.",
-//           "Get listed in local directories and community websites.",
-//           "Mention specific neighborhoods or areas you serve in your content."
-//         ],
-//         "socialSignals": [
-//           "Maintain active, engaging profiles on platforms like Facebook and Instagram.",
-//           "Share impact stories, event updates, and volunteer spotlights, and drive traffic back to the website."
-//         ],
-//         "aiContentOptimization": [
-//           "Use AI for brainstorming blog topics and creating initial content outlines.",
-//           "CRITICAL: All content must be heavily edited and infused with human experience, real stories, and authentic photos to build trust. Avoid publishing generic, unedited AI content."
-//         ],
-//         "featuredSnippetTargets": [
-//           "Create dedicated content blocks that directly answer common questions (e.g., 'How can I sponsor a child?').",
-//           "Use question-based H2/H3 headings followed by a concise paragraph, bulleted list, or numbered list."
-//         ],
-//         "voiceSearchOptimization": [
-//           "Optimize FAQ pages with full-sentence questions and conversational answers.",
-//           "Focus on long-tail, question-based keywords."
-//         ],
-//         "competitiveAdvantages": [
-//           "Superior Content Depth & Quality: Move beyond a single page to become a true resource.",
-//           "Strong E-E-A-T: Build trust through transparency and authenticity, which the competitor lacks.",
-//           "Proactive Off-Page SEO: A targeted backlink and digital PR strategy will build authority the competitor does not have.",
-//           "Technical Excellence: A modern, mobile-first, and technically sound website will outperform the competitor's basic site."
-//         ]
-//       },
-//       "implementationPlan": {
-//         "quickWins": [
-//           {
-//             "task": "Set up Google Analytics and Google Search Console.",
-//             "priority": "High",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Create and optimize a Google Business Profile.",
-//             "priority": "High",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Plan the new multi-page website architecture and content strategy.",
-//             "priority": "High",
-//             "impact": "High"
-//           }
-//         ],
-//         "mediumTermGoals": [
-//           {
-//             "task": "Build and launch the new multi-page, mobile-responsive website.",
-//             "priority": "High",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Write and publish the first 5-10 pieces of core content (program pages, about us, success stories).",
-//             "priority": "High",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Begin local citation building and directory submissions.",
-//             "priority": "Medium",
-//             "impact": "Medium"
-//           }
-//         ],
-//         "longTermStrategy": [
-//           {
-//             "task": "Consistently publish 2-4 new blog posts/success stories per month.",
-//             "priority": "Medium",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Implement an ongoing digital PR and link-building campaign.",
-//             "priority": "High",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Publish an annual impact report and promote it heavily.",
-//             "priority": "Medium",
-//             "impact": "High"
-//           }
-//         ],
-//         "priorityMatrix": [
-//           {
-//             "quadrant": "High Impact / Low Effort",
-//             "actions": [
-//               "Google Business Profile setup",
-//               "On-page SEO for existing (new) pages",
-//               "GSC/GA setup"
-//             ]
-//           },
-//           {
-//             "quadrant": "High Impact / High Effort",
-//             "actions": [
-//               "New website development",
-//               "Consistent content creation",
-//               "Link building/Digital PR"
-//             ]
-//           }
-//         ],
-//         "estimatedTimeline": [
-//           {
-//             "phase": "Phase 1: Foundation & Planning (Months 1-2)",
-//             "activities": [
-//               "Strategy, keyword research, site architecture, initial content writing."
-//             ]
-//           },
-//           {
-//             "phase": "Phase 2: Build & Launch (Months 3-4)",
-//             "activities": [
-//               "Website development, publishing core content, technical SEO implementation."
-//             ]
-//           },
-//           {
-//             "phase": "Phase 3: Growth & Authority (Months 5+)",
-//             "activities": [
-//               "Ongoing content creation, link building, social media promotion, performance analysis."
-//             ]
-//           }
-//         ],
-//         "requiredResources": [
-//           "SEO Strategist",
-//           "Web Developer",
-//           "Content Writer/Manager",
-//           "Digital PR/Outreach Specialist (optional but recommended)"
-//         ]
-//       }
-//     }
-//   }
-// }
+import ContentCreation from "./ContentCreation ";
+import ContentLoader from "./ContentLoader";
 
 
 
 
+// Tab Navigation Component
+const TabNavigation = ({ activeTab, setActiveTab, hasData }) => {
+  if (!hasData) return null;
 
-// const data = {
-//   "remainingTokens": 3500,
-//   "analysisType": "comparison",
-//   "tokensCost": 4000,
-//   "analyzedUrls": {
-//     "competitor": "https://www.anjumaneislahtrust.com/",
-//     "our": "https://www.jamiakhadijatulkubratrust.com/"
-//   },
-//   "comparison": {
-//     "competitorInsights": {
-//       "analysisSummary": {
-//         "competitorStrengths": "The competitor has a clear, emotionally resonant mission statement ('Empowering Dreams Through Education') and a simple, single-page design that is easy for a user to scan quickly. Their primary strength is likely offline brand recognition within a specific community, driving direct and branded traffic.",
-//         "competitorWeaknesses": "The website is extremely weak from an SEO perspective. It is a single-page site, which severely limits its ability to rank for a variety of keywords. It lacks fundamental on-page SEO elements like a meta description, keyword-optimized titles and headings, and structured data. There is no blog or resource center, creating a massive content void.",
-//         "rankingFactors": [
-//           "Branded Search Volume: Likely ranks for its own name, 'Anjuman-e-Islah'.",
-//           "Domain Name: The domain name matches the brand, which helps with brand recall and search.",
-//           "Simplicity: The user experience is straightforward for the single goal of introducing the organization, though it fails to address diverse user intents."
-//         ],
-//         "contentGaps": [
-//           "Dedicated Program Pages: No in-depth pages explaining their Education, Healthcare, or Community programs.",
-//           "Blog/Resource Center: Complete absence of articles, guides, or news to attract informational search traffic.",
-//           "Impact/Transparency Reports: No annual reports, financial disclosures, or detailed impact studies to build trust and attract links.",
-//           "Success Stories/Testimonials: While 'Impact Stories' is a section, it lacks depth. Individual, detailed case study pages are missing.",
-//           "Volunteer/Donor Information: No dedicated content hubs for potential volunteers or detailed guides for corporate donors."
-//         ],
-//         "overallAssessment": "The competitor's website is a digital brochure, not an SEO asset. It is highly vulnerable and can be easily outranked for any non-branded keyword with a moderately sophisticated content and technical SEO strategy. The barrier to entry for outranking them is very low."
-//       },
-//       "targetKeywords": {
-//         "primaryKeywords": [
-//           "educational trust for underprivileged",
-//           "charity for children's education",
-//           "sponsor a child's education",
-//           "donate for education",
-//           "non-profit for poor children"
-//         ],
-//         "longTailKeywords": [
-//           "how to help fund a child's education in India",
-//           "best educational welfare trust for donations",
-//           "support programs for underprivileged students",
-//           "ways to contribute to community education",
-//           "get tax deduction for education donation"
-//         ],
-//         "questionBasedKeywords": [
-//           "How can I sponsor a child's education?",
-//           "What is the impact of donating to educational charities?",
-//           "Where does my donation for education go?",
-//           "How do educational trusts help communities?",
-//           "Which charity is best for child education?"
-//         ],
-//         "semanticKeywords": [
-//           "child welfare",
-//           "poverty alleviation",
-//           "community development",
-//           "social impact",
-//           "skill development",
-//           "educational sponsorship",
-//           "non-governmental organization (NGO)"
-//         ],
-//         "lowCompetitionOpportunities": [
-//           "educational trust in [specific city/region]",
-//           "support for girls' education in [specific city]",
-//           "funding for school supplies for poor students",
-//           "volunteer opportunities education NGO [city]"
-//         ],
-//         "keywordDifficulty": [
-//           {
-//             "keywordGroup": "Primary Keywords",
-//             "estimatedDifficulty": "Medium"
-//           },
-//           {
-//             "keywordGroup": "Long-Tail & Question-Based",
-//             "estimatedDifficulty": "Low to Medium"
-//           },
-//           {
-//             "keywordGroup": "Low Competition (Local)",
-//             "estimatedDifficulty": "Low"
-//           }
-//         ]
-//       },
-//       "contentStrategy": {
-//         "contentTypes": [
-//           "In-depth 'Pillar' Pages for core topics (e.g., 'Child Sponsorship Programs')",
-//           "Supporting Blog Posts for long-tail keywords",
-//           "Detailed Case Studies/Success Stories (text and video)",
-//           "Annual Impact Reports (interactive web page and downloadable PDF)",
-//           "FAQ pages for donors and volunteers",
-//           "Infographics showing donation impact"
-//         ],
-//         "contentFormat": [
-//           "Long-form articles (1500+ words)",
-//           "Video testimonials from beneficiaries and staff",
-//           "Photo galleries with optimized images and captions",
-//           "Interactive data visualizations for impact reports",
-//           "Downloadable guides for corporate partners"
-//         ],
-//         "contentDepth": "Move from a single-page overview to a multi-page, in-depth architecture. Each program (Education, Healthcare) must have its own dedicated parent page with child pages detailing specific initiatives. Content should be comprehensive, answering all potential user questions on a topic, establishing topical authority.",
-//         "uniqueAngles": [
-//           "'A Day in the Life' stories of sponsored children.",
-//           "'From Classroom to Career': Follow-up stories on past beneficiaries.",
-//           "'The Ripple Effect': Content showing how educating one child impacts their family and community.",
-//           "Transparent 'Donation Tracker' showing exactly how funds are used."
-//         ],
-//         "expertiseSignals": [
-//           "Detailed author bios for blog posts, featuring staff and experts.",
-//           "Showcase credentials, awards, and certifications of the organization.",
-//           "Publish original research or data from your programs.",
-//           "Feature testimonials from community leaders, teachers, and corporate partners."
-//         ],
-//         "userIntentAlignment": [
-//           {
-//             "intent": "Informational",
-//             "content": "Blog posts answering 'how-to' and 'what-is' questions about poverty, education, and development."
-//           },
-//           {
-//             "intent": "Transactional",
-//             "content": "Clear, multi-option donation pages (one-time, monthly, sponsor-a-child) with secure payment gateways."
-//           },
-//           {
-//             "intent": "Commercial Investigation",
-//             "content": "Comparison pages (e.g., 'How We Compare to Other Charities'), detailed program pages, and transparent impact reports."
-//           }
-//         ],
-//         "contentClusterStrategy": [
-//           {
-//             "pillarPage": "The Ultimate Guide to Sponsoring a Child's Education",
-//             "clusterContent": [
-//               "How Much Does It Cost to Sponsor a Child?",
-//               "What Do Sponsored Children Receive?",
-//               "Writing Letters to Your Sponsored Child",
-//               "The Long-Term Impact of Child Sponsorship"
-//             ]
-//           }
-//         ]
-//       },
-//       "onPageSEOSuggestions": {
-//         "titleTagOptimization": [
-//           "Home: 'Educate Underprivileged Children | [Your Trust Name] | Donate Today'",
-//           "Program Page: 'Child Education Programs That Make a Difference | [Your Trust Name]'",
-//           "Blog Post: '10 Ways to Support Student Learning | [Your Trust Name] Blog'"
-//         ],
-//         "metaDescriptions": [
-//           "Create unique, compelling meta descriptions (155-160 characters) for each page.",
-//           "Include a primary keyword and a strong call-to-action (e.g., 'Learn more', 'Donate now', 'Get involved')."
-//         ],
-//         "headerStructure": [
-//           "Use one unique H1 tag per page that targets the main keyword.",
-//           "Break down content logically with keyword-rich H2s and H3s.",
-//           "Example Structure: H1: Our Education Support Program -> H2: Primary School Sponsorship -> H2: High School Scholarships -> H2: Academic Resources Provided."
-//         ],
-//         "internalLinking": [
-//           "Link from blog posts to relevant program pages and donation pages.",
-//           "Create contextual anchor text (e.g., 'learn more about our education support programs' instead of 'click here').",
-//           "Link pillar pages to their cluster content and vice-versa to build topical authority."
-//         ],
-//         "schemaMarkup": [
-//           "Implement `NGO` or `Organization` schema on the homepage.",
-//           "Use `Article` schema for all blog posts and news.",
-//           "Use `FAQPage` schema on pages with question-and-answer sections.",
-//           "Use `Person` schema on 'About Us' page for board members and key staff."
-//         ],
-//         "urlStructure": [
-//           "Create clean, simple, keyword-rich URLs.",
-//           "Example: `yourdomain.com/our-work/education-programs` instead of `yourdomain.com/page-id-2`."
-//         ],
-//         "imageOptimization": [
-//           "Compress all images to ensure fast page load times.",
-//           "Use descriptive, keyword-relevant file names (e.g., `student-receives-school-supplies.jpg`).",
-//           "Write descriptive ALT text for all images for accessibility and SEO."
-//         ],
-//         "contentStructure": [
-//           "Use short paragraphs, bulleted lists, and blockquotes to improve readability.",
-//           "Incorporate a Table of Contents with jump links for long-form content.",
-//           "Embed relevant videos and images to increase engagement."
-//         ]
-//       },
-//       "backlinkStrategy": {
-//         "highAuthorityTargets": [
-//           "Local news websites (for features on your work)",
-//           "Reputable non-profit directories (GuideStar, Charity Navigator)",
-//           "Educational institution websites (.edu links from university resource pages)",
-//           "Blogs in the philanthropy, education, and social impact niches",
-//           "Corporate partner websites (via their CSR pages)"
-//         ],
-//         "linkBuildingTactics": [
-//           "Digital PR: Pitch unique stories and data from your impact reports to journalists.",
-//           "Guest Posting: Write articles for relevant blogs on topics you are an expert in.",
-//           "Resource Page Link Building: Create definitive guides and ask other sites to link to them.",
-//           "Unlinked Brand Mentions: Find where your organization is mentioned online and request a link."
-//         ],
-//         "contentForLinkEarning": [
-//           "A comprehensive annual impact report with original data and infographics.",
-//           "An interactive map showcasing project locations and success stories.",
-//           "A free, high-value resource, like a 'Guide to Corporate Social Responsibility for Small Businesses'.",
-//           "A scholarship program page that educational institutions can link to."
-//         ],
-//         "digitalPROpportunities": [
-//           "Launch seasonal campaigns (e.g., 'Back-to-School Drive') and create a media kit.",
-//           "Partner with local businesses or influencers for fundraising events.",
-//           "Release statements or data related to current events in education or social welfare."
-//         ],
-//         "competitorBacklinkGaps": "The competitor likely has a very weak backlink profile, possibly limited to a few local directories. The entire landscape is a gap. We can analyze the backlink profiles of larger, national-level education charities for proven link-building strategies and targets."
-//       },
-//       "technicalSEO": {
-//         "coreWebVitals": [
-//           "Optimize images (compress, use next-gen formats like WebP).",
-//           "Minimize render-blocking resources (CSS, JS).",
-//           "Ensure a stable layout to avoid Cumulative Layout Shift (CLS)."
-//         ],
-//         "mobileOptimization": [
-//           "Implement a responsive design that works flawlessly on all devices.",
-//           "Ensure text is readable and tap targets are appropriately sized for mobile users.",
-//           "Prioritize mobile page speed."
-//         ],
-//         "siteSpeed": [
-//           "Use a content delivery network (CDN) to serve assets quickly.",
-//           "Enable browser caching and Gzip compression.",
-//           "Choose a high-quality, reliable web host."
-//         ],
-//         "crawlability": [
-//           "Create and submit an XML sitemap to Google Search Console.",
-//           "Ensure a logical site structure that is easy for search engine bots to follow.",
-//           "Check for and fix any crawl errors reported in Google Search Console."
-//         ],
-//         "indexingOptimization": [
-//           "Use canonical tags to prevent duplicate content issues.",
-//           "Ensure no important pages are blocked by `robots.txt` or have a `noindex` tag.",
-//           "Use a clear internal linking structure to help Google find all your important pages."
-//         ],
-//         "structuredData": [
-//           "Re-emphasize implementation of `NGO`, `Article`, `FAQPage`, and `Person` schema to gain rich snippets and enhance search visibility."
-//         ],
-//         "securityEnhancements": [
-//           "Implement HTTPS across the entire site by installing an SSL certificate to protect user data and build trust."
-//         ]
-//       },
-//       "additionalOpportunities": {
-//         "eatSignals": [
-//           "Create a comprehensive 'About Us' page with the organization's history, mission, and photos/bios of the leadership team.",
-//           "Prominently display charity registration numbers, physical address, and phone number.",
-//           "Create an 'In the Media' or 'Press' page to showcase mentions and awards.",
-//           "Get testimonials from beneficiaries, donors, and partners."
-//         ],
-//         "localSEOTactics": [
-//           "Create and fully optimize a Google Business Profile for your physical location.",
-//           "Generate positive reviews from volunteers and local donors.",
-//           "Build citations in local online directories.",
-//           "Create location-specific pages or content if you serve multiple areas."
-//         ],
-//         "socialSignals": [
-//           "Maintain active, engaging profiles on platforms like Facebook, Instagram, and LinkedIn.",
-//           "Share success stories, event updates, and links to your new content to drive traffic and social proof."
-//         ],
-//         "aiContentOptimization": [
-//           "Use AI tools for keyword research, topic ideation, and creating initial content outlines.",
-//           "CRITICAL: Ensure all AI-generated drafts are heavily edited and enhanced by a human subject matter expert to add unique insights, personal stories, and factual accuracy to align with E-E-A-T principles."
-//         ],
-//         "featuredSnippetTargets": [
-//           "Structure content to directly answer common questions.",
-//           "Use Q&A formats, bulleted lists, and tables which are often pulled for featured snippets.",
-//           "Target keywords like 'How to...', 'What is...', 'Why...'"
-//         ],
-//         "voiceSearchOptimization": [
-//           "Focus on creating content that answers conversational, long-tail questions.",
-//           "Utilize FAQ pages and ensure answers are concise and direct."
-//         ],
-//         "competitiveAdvantages": [
-//           "Become the go-to informational resource, not just a donation portal.",
-//           "Leverage superior content depth and quality to build topical authority.",
-//           "Build trust through radical transparency (detailed reports, financials).",
-//           "Utilize technical SEO and schema to dominate search features the competitor is ignoring."
-//         ]
-//       },
-//       "implementationPlan": {
-//         "quickWins": [
-//           {
-//             "task": "Build foundational 5-page website (Home, About, Programs, Donate, Contact).",
-//             "timeline": "Month 1",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Implement basic on-page SEO (titles, metas) for all core pages.",
-//             "timeline": "Month 1",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Set up and optimize Google Business Profile and Google Search Console.",
-//             "timeline": "Month 1",
-//             "impact": "Medium"
-//           }
-//         ],
-//         "mediumTermGoals": [
-//           {
-//             "task": "Develop and publish 3 pillar pages and 9 supporting blog posts.",
-//             "timeline": "Months 2-6",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Implement comprehensive schema markup (NGO, Article, FAQ).",
-//             "timeline": "Month 3",
-//             "impact": "Medium"
-//           },
-//           {
-//             "task": "Begin digital PR outreach, aiming for 5-10 quality backlinks.",
-//             "timeline": "Months 4-6",
-//             "impact": "High"
-//           }
-//         ],
-//         "longTermStrategy": [
-//           {
-//             "task": "Publish 2-4 new content pieces (blogs, case studies) per month.",
-//             "timeline": "Ongoing from Month 7",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Create and promote an annual interactive impact report.",
-//             "timeline": "Annually",
-//             "impact": "High"
-//           },
-//           {
-//             "task": "Continuously build backlinks and partnerships.",
-//             "timeline": "Ongoing",
-//             "impact": "High"
-//           }
-//         ],
-//         "priorityMatrix": [
-//           {
-//             "priority": "P1 (Urgent)",
-//             "tasks": "Website build, Core page on-page SEO, Technical SEO setup (Sitemap, HTTPS)."
-//           },
-//           {
-//             "priority": "P2 (High)",
-//             "tasks": "Pillar content creation, Schema implementation, Google Business Profile."
-//           },
-//           {
-//             "priority": "P3 (Medium)",
-//             "tasks": "Ongoing blogging, Backlink outreach, Social media content sharing."
-//           }
-//         ],
-//         "estimatedTimeline": [
-//           "Months 1-3: Foundational setup and initial content development.",
-//           "Months 4-6: Expect to see initial rankings for long-tail keywords and an increase in organic traffic.",
-//           "Months 7-12: Aim for page 1 rankings for primary keywords and significant growth in non-branded organic traffic and conversions (donations/inquiries)."
-//         ],
-//         "requiredResources": [
-//           "Web Developer (for initial build and technical fixes)",
-//           "SEO Strategist / Manager",
-//           "Content Writer with experience in the non-profit sector",
-//           "Digital PR / Outreach Specialist",
-//           "Analytics tools (Google Analytics, Google Search Console, Ahrefs/SEMrush)"
-//         ]
-//       }
-//     },
-//     "ourInsights": {
-//       "analysisSummary": {
-//         "competitorStrengths": "The competitor has a clear brand identity and a simple, focused call-to-action for donations. Their strongest SEO asset is the use of 'EducationalOrganization' schema.org structured data, which helps Google understand their entity and likely boosts their visibility in local and branded searches.",
-//         "competitorWeaknesses": "The website's architecture is its most critical weakness; it is a single-page site using hash links for navigation. This severely limits content depth, prevents ranking for a diverse range of keywords, and offers no internal linking value. They also use generic stock photos, which harms E-E-A-T signals.",
-//         "rankingFactors": [
-//           "Branded search authority ('Jamia Khadijatul Kubra')",
-//           "Implementation of 'EducationalOrganization' schema with local address details",
-//           "Clear, albeit shallow, content defining their purpose (education, welfare)",
-//           "Simple, mobile-friendly single-page design (though poor for SEO)"
-//         ],
-//         "contentGaps": [
-//           "No dedicated pages for specific programs (e.g., Quran memorization, Hadith studies, secular subjects).",
-//           "Absence of a blog or resource center to capture informational queries.",
-//           "No detailed 'About Us' page with history, mission, and trustee/teacher bios.",
-//           "Lack of student testimonials, success stories, or detailed impact reports.",
-//           "No FAQ section to address common donor or parent questions."
-//         ],
-//         "overallAssessment": "The competitor's website is fundamentally weak from an SEO perspective due to its single-page structure. It likely ranks only for its brand name and a few highly specific local queries. There is a massive opportunity to outrank them across the board by building a proper multi-page website with in-depth content and a strategic internal linking structure."
-//       },
-//       "targetKeywords": {
-//         "primaryKeywords": [
-//           "islamic school for girls",
-//           "madrasa in haryana",
-//           "islamic educational trust",
-//           "donate for muslim education",
-//           "girls madrasa in mewat"
-//         ],
-//         "longTailKeywords": [
-//           "support education for underprivileged muslim girls",
-//           "how to donate zakat for madrasa students",
-//           "quran memorization course for girls in india",
-//           "islamic boarding school near nuh haryana",
-//           "best alimah course for girls"
-//         ],
-//         "questionBasedKeywords": [
-//           "How can I support an Islamic school?",
-//           "What is taught in a girls' madrasa?",
-//           "Where can I donate for building a madrasa?",
-//           "Is my donation to a welfare trust tax-deductible?",
-//           "What are the benefits of Islamic education?"
-//         ],
-//         "semanticKeywords": [
-//           "Quranic studies",
-//           "Hifz program",
-//           "Alimiyyah course",
-//           "Islamic charity",
-//           "Zakat eligibility",
-//           "Sadaqah Jariyah",
-//           "community welfare",
-//           "spiritual guidance"
-//         ],
-//         "lowCompetitionOpportunities": [
-//           "islamic school punhana",
-//           "donate to madrasa in nuh mewat",
-//           "welfare trust shamshabad khurd",
-//           "healthcare programs for muslim community haryana"
-//         ],
-//         "keywordDifficulty": [
-//           {
-//             "keywordGroup": "Branded/Local",
-//             "difficulty": "Low",
-//             "rationale": "Competitor's strength is localized. A better local presence will be effective."
-//           },
-//           {
-//             "keywordGroup": "Informational/Long-Tail",
-//             "difficulty": "Low-Medium",
-//             "rationale": "Competitor has zero content for these. A content-rich site can easily capture this traffic."
-//           },
-//           {
-//             "keywordGroup": "Transactional/Broad",
-//             "difficulty": "Medium",
-//             "rationale": "More competition from larger national/international charities."
-//           }
-//         ]
-//       },
-//       "contentStrategy": {
-//         "contentTypes": [
-//           "In-depth Program Pages (Hifz, Alimiyyah, etc.)",
-//           "Blog Articles answering user questions",
-//           "Video Testimonials from students and parents",
-//           "Impact Reports (PDFs and web pages)",
-//           "Faculty & Trustee Biography Pages",
-//           "Donation Campaign Landing Pages",
-//           "Photo & Video Galleries (using real media)"
-//         ],
-//         "contentFormat": [
-//           "Long-form articles (1500+ words) for core pages and blog posts",
-//           "High-quality, original photography and videography",
-//           "Infographics to visualize donation impact",
-//           "Structured FAQ sections on relevant pages",
-//           "A multi-page website architecture instead of a single-page site"
-//         ],
-//         "contentDepth": "Each core program (e.g., Hifz) should have its own dedicated page detailing the curriculum, daily schedule, learning outcomes, and faculty expertise. Blog posts should comprehensively answer a single user query, going beyond what competitors offer.",
-//         "uniqueAngles": [
-//           "Focus on the 'Impact of a Donation' with specific examples (e.g., 'How ₹1500 Provides a Student's Meals for a Month').",
-//           "Spotlight student success stories: 'From Our Classroom to [University/Career]'.",
-//           "Highlight the blend of 'Traditional Islamic Values with Modern Educational Needs'.",
-//           "Create content around the experience of being a student, not just the curriculum."
-//         ],
-//         "expertiseSignals": [
-//           "Create a 'Faculty' page with detailed biographies, qualifications, and photos of all teachers and scholars.",
-//           "Publish articles or commentaries on a blog authored by your institution's scholars.",
-//           "Showcase any accreditations, affiliations, or awards received by the institution.",
-//           "Feature testimonials from recognized community leaders or scholars."
-//         ],
-//         "userIntentAlignment": [
-//           {
-//             "intent": "Informational",
-//             "content": "Create blog posts and FAQ pages answering questions like 'What is an Alimiyyah course?'"
-//           },
-//           {
-//             "intent": "Commercial Investigation",
-//             "content": "Develop detailed program pages comparing your offerings and showcasing your unique value."
-//           },
-//           {
-//             "intent": "Transactional",
-//             "content": "Build clear, trustworthy, and easy-to-use donation pages with multiple payment options."
-//           },
-//           {
-//             "intent": "Navigational",
-//             "content": "Ensure brand name is prominent and create clear contact/location pages for users searching for you."
-//           }
-//         ],
-//         "contentClusterStrategy": [
-//           {
-//             "pillarPage": "A Guide to Islamic Education for Girls",
-//             "clusterContent": [
-//               "What is a Hifz Program?",
-//               "Our Alimiyyah Course Curriculum",
-//               "The Importance of Hadith Studies",
-//               "A Day in the Life of Our Student",
-//               "Balancing Deen and Duniya: Our Approach"
-//             ]
-//           }
-//         ]
-//       },
-//       "onPageSEOSuggestions": {
-//         "titleTagOptimization": [
-//           "Create unique titles for every page.",
-//           "Format: Primary Keyword | Secondary Keyword | Brand Name",
-//           "Example: 'Hifz Program for Girls in Haryana | Quran Memorization | Our Brand'"
-//         ],
-//         "metaDescriptions": [
-//           "Write unique, compelling meta descriptions (150-160 characters) for each page.",
-//           "Include the primary keyword and a clear call-to-action (e.g., 'Learn More' or 'Donate Now')."
-//         ],
-//         "headerStructure": [
-//           "Use one unique H1 tag per page that targets the main keyword.",
-//           "Use H2s and H3s to structure content logically, targeting secondary and long-tail keywords.",
-//           "Example H1 for Hifz Page: 'Complete Hifz-ul-Quran Program for Girls'"
-//         ],
-//         "internalLinking": [
-//           "Develop a logical site architecture with a clear navigation menu.",
-//           "Link from the homepage to all primary program and 'About' pages.",
-//           "Contextually link from blog posts to relevant program or donation pages.",
-//           "Add a 'Related Programs' section on service pages."
-//         ],
-//         "schemaMarkup": [
-//           "Expand on `EducationalOrganization` schema with more details (e.g., `alumni`, `founder`).",
-//           "Use `FAQPage` schema for all FAQ sections.",
-//           "Use `Article` schema for blog posts.",
-//           "Use `VideoObject` schema for embedded video testimonials."
-//         ],
-//         "urlStructure": [
-//           "Use short, descriptive, keyword-rich URLs.",
-//           "Example: `ourdomain.com/programs/hifz-for-girls`",
-//           "Avoid dates or generic terms in URLs."
-//         ],
-//         "imageOptimization": [
-//           "Replace all stock photos with high-quality, original images.",
-//           "Use descriptive alt text for all images (e.g., 'Students reciting the Quran in our classroom in Mewat').",
-//           "Compress images and use modern formats like WebP to improve page speed."
-//         ],
-//         "contentStructure": [
-//           "Use short paragraphs, bullet points, and numbered lists for readability.",
-//           "Incorporate blockquotes for testimonials or key statements.",
-//           "Use clear headings and subheadings to break up text."
-//         ]
-//       },
-//       "backlinkStrategy": {
-//         "highAuthorityTargets": [
-//           "Local news outlets in Haryana (e.g., The Tribune, Dainik Bhaskar).",
-//           "National and international Islamic news portals.",
-//           "Reputable non-profit and charity directories (e.g., GuideStar India).",
-//           "Educational institution listing websites."
-//         ],
-//         "linkBuildingTactics": [
-//           "Digital PR: Pitch student success stories or community impact news to journalists.",
-//           "Guest Posting: Write articles for respected Islamic or educational blogs.",
-//           "Local SEO Citations: Build consistent listings in local directories.",
-//           "Resource Link Building: Create a valuable resource (e.g., a guide to Zakat) and promote it."
-//         ],
-//         "contentForLinkEarning": [
-//           "An annual 'Impact Report' infographic showing how donations were used.",
-//           "A comprehensive guide: 'A Parent's Guide to Choosing a Madrasa'.",
-//           "Original research or a survey on the state of girls' education in the local area.",
-//           "A free, high-quality Islamic calendar resource for download."
-//         ],
-//         "digitalPROpportunities": [
-//           "Announce construction milestones or the launch of a new facility.",
-//           "Celebrate graduation ceremonies with a press release.",
-//           "Launch a new community-focused program (e.g., food drive, health clinic) and invite local media.",
-//           "Partner with other local organizations for a joint charity event."
-//         ],
-//         "competitorBacklinkGaps": "The competitor likely has a very sparse backlink profile consisting of low-quality directory links. There is a huge opportunity to build high-quality, relevant links to our in-depth content pages, something the competitor cannot do with their single-page site."
-//       },
-//       "technicalSEO": {
-//         "coreWebVitals": [
-//           "Optimize images to improve Largest Contentful Paint (LCP).",
-//           "Minimize render-blocking JavaScript and CSS to improve First Input Delay (FID/INP).",
-//           "Ensure web fonts load efficiently and reserve space for images to prevent Cumulative Layout Shift (CLS)."
-//         ],
-//         "mobileOptimization": [
-//           "Implement a responsive, mobile-first design.",
-//           "Ensure tap targets are large enough and navigation is easy on touch screens.",
-//           "Test the website on various mobile devices before launch."
-//         ],
-//         "siteSpeed": [
-//           "Utilize browser caching and a Content Delivery Network (CDN).",
-//           "Enable Gzip compression on the server.",
-//           "Minify HTML, CSS, and JavaScript files."
-//         ],
-//         "crawlability": [
-//           "Create and submit an XML sitemap to Google Search Console.",
-//           "Implement a logical internal linking structure so crawlers can discover all pages.",
-//           "Ensure the `robots.txt` file is not blocking important resources."
-//         ],
-//         "indexingOptimization": [
-//           "Ensure all key pages are set to 'index, follow'.",
-//           "Use canonical tags correctly to avoid duplicate content issues.",
-//           "Monitor indexing status in Google Search Console."
-//         ],
-//         "structuredData": [
-//           "Implement a comprehensive schema strategy beyond what the competitor has, as detailed in the On-Page section.",
-//           "Validate all structured data using Google's Rich Results Test tool."
-//         ],
-//         "securityEnhancements": [
-//           "Ensure the entire site uses HTTPS by installing an SSL certificate.",
-//           "Keep all software (CMS, plugins) up to date.",
-//           "Use secure and trusted payment gateways for donations."
-//         ]
-//       },
-//       "additionalOpportunities": {
-//         "eatSignals": [
-//           "Create a comprehensive 'About Us' page with the institution's full history and mission.",
-//           "Develop a 'Meet the Faculty' page with detailed bios, credentials, and photos.",
-//           "Display the full physical address and phone number prominently in the website footer.",
-//           "Showcase media mentions, awards, and accreditations in a dedicated 'Trust Signals' section."
-//         ],
-//         "localSEOTactics": [
-//           "Create and fully optimize a Google Business Profile for the institution.",
-//           "Actively solicit reviews from parents, donors, and community members.",
-//           "Ensure Name, Address, Phone (NAP) consistency across all online directories.",
-//           "Create location-specific content (e.g., 'Community Programs in Nuh, Mewat')."
-//         ],
-//         "socialSignals": [
-//           "Maintain active profiles on platforms like Facebook and Instagram to share updates, photos, and student life.",
-//           "Use social media to promote new blog content and donation campaigns.",
-//           "Engage with the community by responding to comments and messages."
-//         ],
-
-//         "aiContentOptimization": "Use AI tools for keyword research, topic ideation, and generating content outlines. However, all final content must be written, edited, and fact-checked by human subject-matter experts (your scholars) to ensure accuracy and maintain high E-E-A-T, which is critical for this niche.",
+  return (
+    <div className="container mx-auto px-4 pt-6">
+      <div className="flex space-x-1 bg-white/10 backdrop-blur rounded-xl p-1 border border-white/20 max-w-md mx-auto">
+        <button
+          onClick={() => setActiveTab("gemini")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "gemini"
+            ? "bg-white text-blue-700 shadow-sm"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+        >
+          <FiZap className="text-base" />
+          Analysis
+        </button>
+        <button
+          onClick={() => setActiveTab("deepseek")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "deepseek"
+            ? "bg-white text-blue-700 shadow-sm"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+        >
+          <FiTarget className="text-base" />
+          Content Creation
+        </button>
+      </div>
+    </div>
+  );
+};
 
 
-//         "featuredSnippetTargets": [
-//           "Structure content with clear, question-based H2/H3 headings.",
-//           "Provide concise, direct answers immediately following the heading.",
-//           "Use bulleted and numbered lists to summarize processes or benefits.",
-//           "Create a dedicated FAQ page targeting common questions."
-//         ],
-
-//         "voiceSearchOptimization": "Focus on creating conversational, question-based content. The FAQ page and blog posts targeting 'who, what, where, why, how' queries will be crucial for capturing voice search traffic.",
-
-
-//         "competitiveAdvantages": [
-//           "Superior site architecture and content depth will be our primary advantage.",
-//           "Showcasing genuine E-E-A-T with real photos, faculty bios, and student stories will build more trust than the competitor's generic site.",
-//           "A strategic content marketing and link-building plan will attract a much wider audience beyond local/branded search."
-//         ]
-//       },
-//       "implementationPlan": {
-//         "quickWins": [
-//           "Set up Google Analytics and Google Search Console.",
-//           "Create and fully optimize a Google Business Profile.",
-//           "Perform detailed keyword research and map keywords to a new site architecture plan.",
-//           "Register relevant social media profiles."
-//         ],
-//         "mediumTermGoals": [
-//           "Build and launch the new multi-page, mobile-first website.",
-//           "Write and publish all core pages (Home, About, Programs, Donate, Contact).",
-//           "Begin publishing 1-2 blog posts per month.",
-//           "Start building foundational local citations and directory listings."
-//         ],
-//         "longTermStrategy": [
-//           "Execute a consistent content creation plan based on the content cluster strategy.",
-//           "Implement an ongoing digital PR and link-building campaign.",
-//           "Regularly update the website with new testimonials, impact reports, and news.",
-//           "Analyze performance data and refine the strategy quarterly."
-//         ],
-//         "priorityMatrix": [
-//           {
-//             "task": "Google Business Profile Optimization",
-//             "impact": "High",
-//             "effort": "Low"
-//           },
-//           {
-//             "task": "New Multi-Page Website Development",
-//             "impact": "High",
-//             "effort": "High"
-//           },
-//           {
-//             "task": "Core Pages & Blog Content Creation",
-//             "impact": "High",
-//             "effort": "High"
-//           },
-//           {
-//             "task": "Ongoing Link Building & Digital PR",
-//             "impact": "High",
-//             "effort": "Medium (Ongoing)"
-//           }
-//         ],
-//         "estimatedTimeline": [
-//           {
-//             "phase": "1: Foundation & Planning",
-//             "duration": "1 Month"
-//           },
-//           {
-//             "phase": "2: Website Build & Launch",
-//             "duration": "2-3 Months"
-//           },
-//           {
-//             "phase": "3: Content Marketing & SEO Growth",
-//             "duration": "Ongoing (Months 4-12+)"
-//           }
-//         ],
-//         "requiredResources": [
-//           "SEO Strategist",
-//           "Web Developer",
-//           "Content Writer (with niche knowledge)",
-//           "Photographer/Videographer",
-//           "Digital PR/Outreach Specialist"
-//         ]
-//       }
-//     }
-//   }
-// }
 
 function URLAnalyzer() {
   const [url, setUrl] = useState("");
@@ -1459,13 +75,14 @@ function URLAnalyzer() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [history, setHistory] = useState([]);
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [isComparable, setIsComparable] = useState(false)
+  const [isComparable, setIsComparable] = useState(false);
   const [analysisType, setAnalysisType] = useState("seo");
   const [competitorUrl, setCompetitorUrl] = useState("");
   const [yourUrl, setYourUrl] = useState("");
-  const [comparedData, setCompareData] = useState(null)
-
-
+  const [comparedData, setCompareData] = useState(null);
+  const [activeTab, setActiveTab] = useState("gemini"); // New state for tab navigation
+  const [contentCreation, setContentCreation] = useState(null)
+  const [loading1, setLoading1] = useState(false)
 
   const processingSteps = useMemo(
     () => [
@@ -1479,12 +96,343 @@ function URLAnalyzer() {
     ],
     []
   );
-
+  // const analysisData2 = {
+  //   "aiInsights": {
+  //     "analysisSummary": {
+  //       "competitorStrengths": "The competitor has a clear, emotionally resonant headline (H1) and a simple, single-page design that is easy to navigate for a user seeking basic information. The brand name is clear, and they have a prominent 'Donate' call-to-action. Their primary strength lies in branded search for 'Anjuman-e-Islah'.",
+  //       "competitorWeaknesses": "The single-page architecture is a critical SEO weakness, preventing them from ranking for diverse, non-branded keywords. There is a complete lack of meta descriptions, structured data, and in-depth content. The site relies on stock imagery from Unsplash, which weakens E-E-A-T signals. All internal links are anchor links, offering no topical authority building. The overall SEO foundation is extremely weak.",
+  //       "rankingFactors": [
+  //         "Branded Search: Their current ranking is likely driven almost exclusively by users searching for their specific name.",
+  //         "Domain Name: The domain matches their brand name, reinforcing branded search strength.",
+  //         "Simplicity: The site is fast-loading due to its simple structure, which is a minor positive signal."
+  //       ],
+  //       "contentGaps": [
+  //         "Dedicated Program Pages: No in-depth pages for 'Education Programs', 'Healthcare Support', etc.",
+  //         "Impact/Transparency Reports: Lacks detailed reports on fund allocation, program outcomes, or annual financial statements.",
+  //         "Beneficiary Stories: 'Impact Stories' section is just a photo carousel. Individual, detailed case studies are a huge missed opportunity.",
+  //         "FAQ Section: No page addressing common donor questions about tax benefits, donation process, or the organization's history.",
+  //         "Volunteer Information: No content on how people can get involved beyond donating."
+  //       ],
+  //       "overallAssessment": "The competitor's website is a digital brochure, not an SEO-optimized asset. It is highly vulnerable and can be easily outranked by a competitor who implements a foundational, multi-page content strategy focused on topical authority, E-E-A-T signals, and basic technical SEO. Their reliance on a single page for all information is their most significant, exploitable flaw."
+  //     },
+  //     "targetKeywords": {
+  //       "primaryKeywords": [
+  //         "educational trust for underprivileged children",
+  //         "donate for child education in India",
+  //         "welfare trust for education",
+  //         "NGO for poor students",
+  //         "sponsor a child's education"
+  //       ],
+  //       "longTailKeywords": [
+  //         "how to get tax exemption for education donation",
+  //         "best charity to donate for education in [City/Region]",
+  //         "support programs for underprivileged students",
+  //         "non-profit organizations providing academic resources"
+  //       ],
+  //       "questionBasedKeywords": [
+  //         "How can I help a poor child with education?",
+  //         "Where does my donation for education go?",
+  //         "What is the impact of sponsoring a child?",
+  //         "Are education donations tax deductible?"
+  //       ],
+  //       "semanticKeywords": [
+  //         "non-profit organization",
+  //         "charitable giving",
+  //         "community development",
+  //         "social welfare",
+  //         "empowerment",
+  //         "sponsorship",
+  //         "philanthropy"
+  //       ],
+  //       "lowCompetitionOpportunities": [
+  //         "education charity in [specific local area]",
+  //         "volunteer teaching opportunities near me",
+  //         "local NGO for community support",
+  //         "healthcare support for students in [City]"
+  //       ],
+  //       "keywordDifficulty": [
+  //         {
+  //           "keywordGroup": "Primary & Transactional Keywords",
+  //           "difficulty": "Medium",
+  //           "rationale": "Competition exists from established national and international NGOs."
+  //         },
+  //         {
+  //           "keywordGroup": "Long-Tail & Question-Based Keywords",
+  //           "difficulty": "Low-to-Medium",
+  //           "rationale": "High potential for ranking with in-depth, helpful content."
+  //         },
+  //         {
+  //           "keywordGroup": "Local & Low Competition Keywords",
+  //           "difficulty": "Low",
+  //           "rationale": "Targeting a specific geographic area significantly reduces competition."
+  //         }
+  //       ]
+  //     },
+  //     "contentStrategy": {
+  //       "contentTypes": [
+  //         "In-depth Program Pages (Pillar Pages)",
+  //         "Blog Posts (Success Stories, Impact Analyses, News)",
+  //         "Video Testimonials (from beneficiaries, staff, donors)",
+  //         "Infographics (visualizing donation impact)",
+  //         "Downloadable Annual/Transparency Reports (PDF)",
+  //         "Comprehensive FAQ Page"
+  //       ],
+  //       "contentFormat": [
+  //         "Long-form written articles (>1500 words)",
+  //         "High-quality, original photography and video",
+  //         "Data visualizations and charts",
+  //         "Structured Q&A format for FAQs"
+  //       ],
+  //       "contentDepth": "Shift from a single-page overview to a multi-page, topic cluster model. Each program (Education, Healthcare, Community) should be a pillar page with 1,500+ words, covering the what, why, how, and impact, supported by cluster content like specific project updates and case studies.",
+  //       "uniqueAngles": [
+  //         "Transparency Hub: A dedicated section with detailed financial breakdowns and impact metrics.",
+  //         "'Follow the Rupee': An interactive feature showing how a donation is allocated across different programs.",
+  //         "Staff & Volunteer Spotlight: Introduce the team to build human connection and trust.",
+  //         "Resource Guides for the Community: Content that helps the community you serve, establishing authority beyond just asking for donations."
+  //       ],
+  //       "expertiseSignals": [
+  //         "Author bios for blog posts detailing their experience in the non-profit sector.",
+  //         "Publishing detailed, data-backed impact reports.",
+  //         "Featuring endorsements or partnerships with other reputable organizations.",
+  //         "Showcasing media mentions, awards, or certifications."
+  //       ],
+  //       "userIntentAlignment": [
+  //         {
+  //           "intent": "Informational",
+  //           "content": "Create blog posts and guides answering questions like 'How to help poor students'."
+  //         },
+  //         {
+  //           "intent": "Transactional",
+  //           "content": "Develop clear, secure, and multi-option donation pages for specific campaigns ('Donate for school supplies')."
+  //         },
+  //         {
+  //           "intent": "Investigation",
+  //           "content": "Build detailed 'About Us', 'Our Team', and 'Financials' pages to build trust with potential donors comparing organizations."
+  //         }
+  //       ],
+  //       "contentClusterStrategy": [
+  //         {
+  //           "pillarPage": "/education-programs",
+  //           "clusterContent": [
+  //             "/blog/success-story-rahul",
+  //             "/blog/new-academic-resource-center",
+  //             "/blog/impact-of-sponsorship-on-literacy-rates"
+  //           ]
+  //         },
+  //         {
+  //           "pillarPage": "/our-impact",
+  //           "clusterContent": [
+  //             "/reports/2024-annual-report",
+  //             "/blog/community-development-project-update",
+  //             "/testimonials"
+  //           ]
+  //         }
+  //       ]
+  //     },
+  //     "onPageSEOSuggestions": {
+  //       "titleTagOptimization": [
+  //         "Homepage: Educational & Welfare Trust for Children | [Our Org Name]",
+  //         "Donation Page: Donate to Support Underprivileged Children | [Our Org Name]",
+  //         "Program Page: Child Education Programs in [City] | [Our Org Name]"
+  //       ],
+  //       "metaDescriptions": [
+  //         "Create unique, compelling meta descriptions for each page, including a call-to-action. E.g., 'Join [Our Org Name] in transforming lives through education. We provide books, healthcare, and support to 300+ children. See our impact and donate today.'"
+  //       ],
+  //       "headerStructure": [
+  //         "Use one unique H1 per page that targets the main keyword. Use H2s for main sections and H3s for sub-points. Avoid generic H2s like 'About Us' on the about page; instead use 'Our Mission to Empower Through Education'."
+  //       ],
+  //       "internalLinking": [
+  //         "Develop a strong internal linking structure. Link from blog posts to relevant program pages and the donation page. Link from program pages to specific success stories. This distributes authority and improves user navigation."
+  //       ],
+  //       "schemaMarkup": [
+  //         "Implement `NGO` or `Organization` schema on the homepage.",
+  //         "Use `Article` schema for all blog posts and reports.",
+  //         "Use `FAQPage` schema on the FAQ page to capture SERP real estate.",
+  //         "Use `Event` schema for fundraising or community events."
+  //       ],
+  //       "urlStructure": [
+  //         "Create a clean, logical, and keyword-inclusive URL structure. E.g., `our-domain.org/our-work/education-programs` instead of `our-domain.org/page-id-123`."
+  //       ],
+  //       "imageOptimization": [
+  //         "Replace all stock photos with original photography. Compress all images, use descriptive filenames (e.g., `children-learning-in-classroom.jpg`), and write specific, descriptive alt text for accessibility and SEO."
+  //       ],
+  //       "contentStructure": [
+  //         "Break up text with short paragraphs, bullet points, numbered lists, and blockquotes. Use bolding and italics to emphasize key points. Embed relevant images and videos to increase engagement."
+  //       ]
+  //     },
+  //     "backlinkStrategy": {
+  //       "highAuthorityTargets": [
+  //         "Local news media websites (e.g., [City] Times)",
+  //         "Reputable national charity directories (e.g., GuideStar, Charity Navigator)",
+  //         "Websites of corporate sponsors or partners",
+  //         "Education-focused blogs and online publications",
+  //         ".edu domains from local universities with community outreach programs"
+  //       ],
+  //       "linkBuildingTactics": [
+  //         "Digital PR: Pitch compelling data from your impact reports and human-interest stories to journalists.",
+  //         "Local SEO citations: Get listed in local business and non-profit directories.",
+  //         "Guest Posting: Write articles for relevant blogs on topics like 'The Importance of Community Support in Education'.",
+  //         "Unlinked Brand Mentions: Find where your organization is mentioned online and request a link."
+  //       ],
+  //       "contentForLinkEarning": [
+  //         "An annual 'State of Education for Underprivileged Children in [Region]' report with original data.",
+  //         "A high-quality documentary-style video about a beneficiary's journey.",
+  //         "An interactive map showcasing all project locations and their impact.",
+  //         "Scholarship or resource guides for low-income families."
+  //       ],
+  //       "digitalPROpportunities": [
+  //         "Launch a time-sensitive fundraising campaign around a specific need (e.g., 'Winter Clothing Drive') and promote it to local media.",
+  //         "Partner with a local influencer or celebrity for a fundraising event.",
+  //         "Publish an open letter or op-ed in a local newspaper about a relevant social issue."
+  //       ],
+  //       "competitorBacklinkGaps": "The competitor likely has a very weak backlink profile, consisting of a few low-quality directory links at best. The opportunity is vast. Earning even a handful of high-quality links from news media or educational sites will create a significant competitive advantage."
+  //     },
+  //     "technicalSEO": {
+  //       "coreWebVitals": [
+  //         "Optimize images (compress, use next-gen formats like WebP).",
+  //         "Defer or lazy-load non-critical JavaScript and CSS.",
+  //         "Ensure server response time is fast.",
+  //         "Avoid layout shifts by specifying dimensions for images and ads."
+  //       ],
+  //       "mobileOptimization": [
+  //         "Implement a responsive design that provides an excellent user experience on all devices.",
+  //         "Ensure navigation menus, buttons, and forms are easy to use on a small touchscreen."
+  //       ],
+  //       "siteSpeed": [
+  //         "Utilize browser caching and a Content Delivery Network (CDN).",
+  //         "Minify HTML, CSS, and JavaScript files.",
+  //         "Aim for a Largest Contentful Paint (LCP) of under 2.5 seconds."
+  //       ],
+  //       "crawlability": [
+  //         "Create and submit an XML sitemap to Google Search Console.",
+  //         "Ensure a logical site structure that is easy for search engine bots to follow.",
+  //         "Check `robots.txt` to ensure no important pages are being blocked."
+  //       ],
+  //       "indexingOptimization": [
+  //         "Moving from a single-page to a multi-page site is the most critical step for proper indexing of different topics.",
+  //         "Use canonical tags correctly to avoid duplicate content issues if content is syndicated."
+  //       ],
+  //       "structuredData": [
+  //         "Implement `NGO`, `FAQPage`, `Article`, and `Event` schema as a priority. This helps Google understand your content and can result in rich snippets in the SERPs."
+  //       ],
+  //       "securityEnhancements": [
+  //         "Ensure the entire site uses HTTPS (SSL certificate).",
+  //         "Use a secure, trusted payment gateway for donations and display trust seals prominently."
+  //       ]
+  //     },
+  //     "additionalOpportunities": {
+  //       "eatSignals": [
+  //         "Create a comprehensive 'About Us' page with the organization's history, mission, and photos/bios of key staff.",
+  //         "Display physical address and phone number clearly.",
+  //         "Use original photos and videos of your work, not stock images.",
+  //         "Showcase testimonials, media mentions, and awards."
+  //       ],
+  //       "localSEOTactics": [
+  //         "Create and fully optimize a Google Business Profile for your organization's physical location.",
+  //         "Encourage reviews from volunteers and local partners.",
+  //         "Embed a Google Map on your contact page.",
+  //         "Create content that specifically mentions the local areas you serve."
+  //       ],
+  //       "socialSignals": [
+  //         "Maintain active social media profiles (Facebook, Instagram, LinkedIn) to share updates, stories, and drive traffic back to the website.",
+  //         "Run targeted social media ad campaigns for fundraising drives."
+  //       ],
+  //       "aiContentOptimization": [
+  //         "Use AI for brainstorming content ideas, generating outlines, and creating initial drafts for non-sensitive content.",
+  //         "CRITICAL: All content, especially stories and impact claims, must be heavily edited and verified by a human to ensure authenticity, empathy, and accuracy. Avoid generic, soulless AI content."
+  //       ],
+  //       "featuredSnippetTargets": [
+  //         "Create an FAQ page with clear questions and concise, direct answers (e.g., 'Q: Is my donation tax deductible? A: Yes, [Our Org Name] is a registered...').",
+  //         "Use 'how-to' and 'what-is' formats in blog post titles and headers."
+  //       ],
+  //       "voiceSearchOptimization": [
+  //         "Optimize for long-tail, conversational keywords and questions that people would speak rather than type.",
+  //         "Ensure your Google Business Profile information (address, hours, phone) is accurate."
+  //       ],
+  //       "competitiveAdvantages": [
+  //         "Superior Content: Be the primary source of information by creating in-depth, high-quality content the competitor lacks.",
+  //         "Radical Transparency: Publish detailed financial and impact reports to build unparalleled trust.",
+  //         "Community Focus: Create hyper-local content that establishes you as the leading authority in your specific geographic area."
+  //       ]
+  //     },
+  //     "implementationPlan": {
+  //       "quickWins": [
+  //         "Set up and optimize Google Business Profile.",
+  //         "Write and implement a unique, keyword-optimized title tag and meta description for the current homepage.",
+  //         "Compress all existing images and add descriptive alt text."
+  //       ],
+  //       "mediumTermGoals": [
+  //         "Plan and execute the migration from a single-page to a multi-page website architecture.",
+  //         "Write and publish cornerstone content for 3-5 main programs/services.",
+  //         "Implement all recommended schema markup (`NGO`, `FAQ`, etc.).",
+  //         "Launch a blog with the first 5 success stories."
+  //       ],
+  //       "longTermStrategy": [
+  //         "Establish a consistent content calendar (e.g., 2 blog posts/month, 1 quarterly report).",
+  //         "Develop and execute an ongoing digital PR and link-building campaign.",
+  //         "Build an engaged community on one or two key social media platforms.",
+  //         "Continuously monitor keyword rankings and SEO performance, adapting the strategy as needed."
+  //       ],
+  //       "priorityMatrix": [
+  //         {
+  //           "task": "Website Architecture Rework (Multi-page)",
+  //           "impact": "Very High",
+  //           "effort": "High"
+  //         },
+  //         {
+  //           "task": "Cornerstone Content Creation",
+  //           "impact": "Very High",
+  //           "effort": "High"
+  //         },
+  //         {
+  //           "task": "Google Business Profile Optimization",
+  //           "impact": "High",
+  //           "effort": "Low"
+  //         },
+  //         {
+  //           "task": "On-Page SEO Basics (Titles/Metas/Schema)",
+  //           "impact": "High",
+  //           "effort": "Medium"
+  //         },
+  //         {
+  //           "task": "Backlink & PR Campaign",
+  //           "impact": "Very High",
+  //           "effort": "Very High"
+  //         }
+  //       ],
+  //       "estimatedTimeline": [
+  //         {
+  //           "phase": "Phase 1 (Months 1-2): Foundational Setup",
+  //           "activities": "Quick wins, website architecture planning, keyword research, content strategy finalization."
+  //         },
+  //         {
+  //           "phase": "Phase 2 (Months 3-6): Build & Launch",
+  //           "activities": "New website development, cornerstone content creation, launch of the new site and blog."
+  //         },
+  //         {
+  //           "phase": "Phase 3 (Months 6-12+): Grow & Scale",
+  //           "activities": "Consistent content production, link building outreach, performance analysis and optimization."
+  //         }
+  //       ],
+  //       "requiredResources": [
+  //         "SEO Strategist / Manager",
+  //         "Web Developer (for site rebuild)",
+  //         "Content Writer / Storyteller",
+  //         "PR / Outreach Specialist",
+  //         "Budget for web development, tools, and potentially photography/video."
+  //       ]
+  //     }
+  //   }
+  // } //////commentt
 
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem("seoAnalyzerHistory") || "[]");
       setHistory(Array.isArray(saved) ? saved : []);
+
+
+      // setAnalysisData(analysisData2);/////commmenttt
+
     } catch {
       setHistory([]);
     }
@@ -1527,77 +475,210 @@ function URLAnalyzer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+
+  const deepSeekContentCreation = async (contentCreationData) => {
+
+    const prompt = `You are an expert SEO content strategist with 20+ years of experience in outranking competitors. Analyze the competitor data and create a comprehensive, keyword-optimized content strategy designed to dominate search results.
+
+**COMPETITOR ANALYSIS DATA:**
+${JSON.stringify(contentCreationData, null, 2)}
+
+**YOUR MISSION:**
+Create highly SEO-efficient content that WILL outrank the competitor by exploiting their weaknesses and capitalizing on ALL keyword opportunities in the data.
+
+**REQUIRED JSON OUTPUT:**
+Return a valid JSON object with this exact structure:
+
+{
+  "seoOptimizedH1Tags": [
+    {
+      "tag": "Keyword-rich H1 targeting primary keywords from data",
+      "targetKeywords": ["keyword1", "keyword2"],
+      "competitorWeaknessExploited": "Specific weakness this H1 addresses",
+      "searchIntent": "informational/transactional/navigational"
+    }
+  ],
+  "keywordOptimizedH2Tags": [
+    {
+      "h2Tag": "H2 targeting long-tail keywords from data", 
+      "parentH1": "Which H1 this belongs to",
+      "keywordDensity": "Primary keyword phrase",
+      "contentGapFilled": "Gap this H2 addresses"
+    }
+  ],
+  "pillarContentStrategy": {
+    "mainPillarPage": {
+      "title": "Ultimate pillar page title with primary keyword",
+      "targetKeyword": "Main keyword from primary keywords array",
+      "wordCount": "3000+",
+      "h1Tag": "SEO-optimized H1",
+      "h2Structure": [
+        {
+          "h2": "Section targeting competitor content gap",
+          "keywords": ["semantic keywords to include"],
+          "h3Subsections": ["Subsection 1", "Subsection 2"]
+        }
+      ],
+      "seoFeatures": {
+        "metaDescription": "155-character meta description with target keyword",
+        "focusKeyphrase": "Primary keyword phrase",
+        "relatedKeywords": ["related keyword 1", "related keyword 2"],
+        "internalLinks": ["page1", "page2"],
+        "externalAuthorityLinks": ["authoritative source 1"]
+      }
+    }
+  },
+  "highConversionBlogPosts": [
+    {
+      "postTitle": "Compelling blog title with long-tail keyword",
+      "targetKeyword": "Specific keyword from data",
+      "h1Tag": "Blog post H1 tag",
+      "h2Outline": [
+        "H2 section 1 with keywords",
+        "H2 section 2 addressing competitor weakness"
+      ],
+      "metaDescription": "SEO meta description",
+      "estimatedWordCount": "2000+",
+      "contentType": "informational/comparison/how-to guide",
+      "competitorAdvantage": "How this beats competitor content"
+    }
+  ],
+  "socialMediaSEOPosts": [
+    {
+      "platform": "Platform name",
+      "postContent": "Engaging post content with keywords",
+      "hashtags": ["#keyword1", "#keyword2"],
+      "linkToContent": "URL slug targeting keywords",
+      "seoObjective": "Drive traffic to specific page"
+    }
+  ],
+  "technicalSEORecommendations": {
+    "urlStructure": [
+      "/keyword-optimized-url-1",
+      "/keyword-optimized-url-2"
+    ],
+    "schemaMarkup": ["FAQ", "Article", "Organization"],
+    "featuredSnippetTargets": [
+      {
+        "question": "Question from question-based keywords",
+        "answer": "Concise answer for snippet",
+        "targetPage": "Page targeting this snippet"
+      }
+    ]
+  }
+}
+
+**CONTENT GENERATION RULES:**
+1. H1 Tags: Create 12-15 highly targeted H1s using PRIMARY and LONG-TAIL keywords from the data
+2. H2 Tags: Generate 20-25 H2s that support H1s and target SEMANTIC keywords 
+3. Blog Posts: Design 8-10 blog post concepts that address CONTENT GAPS identified
+4. Keywords Integration: Use EVERY keyword opportunity from the JSON data
+5. Competitor Exploitation: Address EVERY weakness mentioned in competitor analysis
+6. Search Intent: Match content to user intent (informational, transactional, navigational)
+7. SEO Efficiency: Optimize for featured snippets, voice search, and mobile-first indexing
+
+**STRATEGIC PRIORITIES:**
+- Target ALL primary keywords with separate H1 tags
+- Address EVERY content gap with dedicated content pieces  
+- Exploit competitor's single-page weakness with multi-page strategy
+- Integrate question-based keywords for featured snippets
+- Use semantic keywords for topical authority
+- Create content for low-competition opportunities
+
+Return ONLY the JSON object with no additional text. Ensure all content is designed to OUTRANK the competitor by being more comprehensive, keyword-optimized, and user-focused than their current strategy.`;
+
+    setLoading1(true)
+
+
+    try {
+      const deepSeekResults = await axios.post(
+        BASE_URL + 'deepseek',
+        {
+          messages: [{ role: 'user', content: prompt }],
+          model: "deepseek/deepseek-r1:free",
+        },
+        { withCredentials: true }
+      );
+      const match = deepSeekResults?.data?.choices[0]?.message?.content
+
+
+      const data = JSON.parse(match)
+
+      setContentCreation(data)
+    } catch (error) {
+      console.error("DeepSeek API Error:", error);
+      throw error;
+    } finally {
+      setLoading1(false)
+    }
+  };
+
+
+
+
   const handleSubmit = async () => {
-    // e.preventDefault();
     setLoading(true);
     setError("");
     setAnalysisData(null);
     scrollToTopSmooth();
-    setCompareData(null)
+    setCompareData(null);
+
 
     try {
       const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
-      setAnalysisData(response.data.aiInsights);
+      setAnalysisData(response.data.aiInsights); ////// uncomment
+      // setContentCreation(response?.data)
       saveToHistory(url, response.data.aiInsights);
+      if (response.status === 200) {
+        deepSeekContentCreation(response?.data)
+
+      }
     } catch (err) {
       if (err.response?.data?.error) {
-
         setError("Error" + ' ' + err.response?.data?.error);
       } else {
-        setError("Failed To Analysze URL! Please Try Again Later");
+        setError("Failed To Analyze URL! Please Try Again Later");
+      }
+      console.error(err);
+    } finally {
+      setLoading(false);
 
+    }
+  };
+
+  const handleAnalysisType = (e) => {
+    setAnalysisType(e.target.value);
+
+    if (e.target.value === "compare") {
+      setIsComparable(true);
+    } else {
+      setIsComparable(false);
+    }
+  };
+
+  const handleCompareSubmit = async () => {
+    setLoading(true);
+    setError("");
+    setAnalysisData(null);
+    scrollToTopSmooth();
+    setCompareData(null);
+
+    try {
+      const response = await axios.post(BASE_URL + "compare", { competitorUrl: competitorUrl, ourUrl: yourUrl }, { withCredentials: true });
+      console.log(response?.data);
+      setCompareData(response?.data);
+      saveToHistory(competitorUrl, response?.data?.comparison?.competitorInsights?.analysisSummary?.competitorStrengths);
+    } catch (err) {
+      if (err.response?.data?.error) {
+        setError("Error" + ' ' + err.response?.data?.error);
+      } else {
+        setError("Failed To Analyze URL! Please Try Again Later");
       }
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
-
-  const handleAnalysisType = (e) => {
-    setAnalysisType(e.target.value)
-
-    if (e.target.value === "comapare") {
-      setIsComparable(true)
-    } else {
-      setIsComparable(false)
-
-    }
-
-  }
-  const handleCompareSubmit = async () => {
-    // e.preventDefault();
-    setLoading(true);
-    setError("");
-    setAnalysisData(null);
-    scrollToTopSmooth();
-    setCompareData(null)
-
-
-
-
-    try {
-      const response = await axios.post(BASE_URL + "compare", { competitorUrl: competitorUrl, ourUrl: yourUrl }, { withCredentials: true });
-      // setAnalysisData(response.data.aiInsights);
-      console.log(response?.data)
-      setCompareData(response?.data)
-      saveToHistory(competitorUrl, response?.data?.comparison?.
-        competitorInsights?.analysisSummary?.competitorStrengths);
-    } catch (err) {
-      if (err.response?.data?.error) {
-
-        setError("Error" + ' ' + err.response?.data?.error);
-      } else {
-        setError("Failed To Analysze URL! Please Try Again Later");
-
-      }
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-
-
 
   return (
     <div className="min-h-screen relative">
@@ -1641,7 +722,7 @@ function URLAnalyzer() {
           <div className="px-4">
             <form onSubmit={(e) => {
               e.preventDefault();
-              isComparable ? handleCompareSubmit() : handleSubmit()
+              isComparable ? handleCompareSubmit() : handleSubmit();
             }} className="max-w-4xl mx-auto">
               <div className="pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 text-center">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">Analyze Any Competitor URL</h1>
@@ -1657,8 +738,7 @@ function URLAnalyzer() {
                   className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-white text-blue-700 hover:bg-gray-100 font-semibold rounded-xl transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base text-center"
                 >
                   <option value="seo">SEO Analysis</option>
-                  <option value="comapare">Compare</option>
-
+                  <option value="compare">Compare</option>
                 </select>
                 {!isComparable && <input
                   type="url"
@@ -1758,10 +838,15 @@ function URLAnalyzer() {
           </div>
         )}
 
-        {/* Analysis Results */}
+        {/* Tab Navigation */}
+        <TabNavigation
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          hasData={analysisData}
+        />
 
-
-        {analysisData && (
+        {/* Analysis Results - Gemini Tab */}
+        {activeTab === "gemini" && analysisData && (
           <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
             {/* Analysis Summary */}
             <section>
@@ -1924,6 +1009,17 @@ function URLAnalyzer() {
                 </div>
               </div>
             </section>
+          </div>
+        )}
+
+        {/* Analysis Results - DeepSeek Tab (Empty for now) */}
+        {activeTab === "deepseek" && analysisData && (
+          <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
+            <div className="text-center">
+
+              {loading1 && <ContentLoader isLoading={loading1} />}
+              {contentCreation && <ContentCreation data={contentCreation} />}
+            </div>
           </div>
         )}
 
