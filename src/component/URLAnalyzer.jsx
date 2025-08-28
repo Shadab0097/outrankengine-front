@@ -1032,7 +1032,7 @@ Return ONLY the JSON object with no additional text. Ensure all content is desig
             <div className="text-center">
 
               {loading1 && <ContentLoader isLoading={loading1} />}
-              {contentCreation ? <ContentCreation data={contentCreation} /> : <h1 className="text-red-600  font-bold items-center">Failed to create Content!</h1>}
+              {contentCreation && <ContentCreation data={contentCreation} />}
             </div>
           </div>
         )}
