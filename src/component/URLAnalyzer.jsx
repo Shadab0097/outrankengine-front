@@ -29,6 +29,7 @@ import Timeline from "../component/Timeline";
 import AnalysisDashboard from "../compareComponent/AnalysisDashboard";
 import ContentCreation from "./ContentCreation ";
 import ContentLoader from "./ContentLoader";
+import ScrapedData from "./ScrapedData";
 
 
 
@@ -60,6 +61,16 @@ const TabNavigation = ({ activeTab, setActiveTab, hasData }) => {
           <FiTarget className="text-base" />
           Content Creation
         </button>
+        <button
+          onClick={() => setActiveTab("scraped")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "scraped"
+            ? "bg-white text-blue-700 shadow-sm"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+        >
+          <FiTarget className="text-base" />
+          Data
+        </button>
       </div>
     </div>
   );
@@ -83,6 +94,8 @@ function URLAnalyzer() {
   const [activeTab, setActiveTab] = useState("gemini"); // New state for tab navigation
   const [contentCreation, setContentCreation] = useState(null)
   const [loading1, setLoading1] = useState(false)
+  const [scrapedContent, setScrapedContent] = useState(null)
+
 
   const processingSteps = useMemo(
     () => [
@@ -628,6 +641,7 @@ Return ONLY the JSON object with no additional text. Ensure all content is desig
       const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
       setAnalysisData(response.data.aiInsights); ////// uncomment
       // setContentCreation(response?.data)
+      setScrapedContent(response?.data?.scrapedContent)
       saveToHistory(url, response.data.aiInsights);
       if (response.status === 200) {
         deepSeekContentCreation(response?.data)
@@ -1018,10 +1032,21 @@ Return ONLY the JSON object with no additional text. Ensure all content is desig
             <div className="text-center">
 
               {loading1 && <ContentLoader isLoading={loading1} />}
-              {contentCreation && <ContentCreation data={contentCreation} />}
+              {contentCreation ? <ContentCreation data={contentCreation} /> : <h1 className="text-red-600  font-bold items-center">Failed to create Content!</h1>}
             </div>
           </div>
         )}
+
+        {activeTab === "scraped" && analysisData && (
+          <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
+            <div className="text-center">
+
+              {scrapedContent && <ScrapedData scrapedContent={scrapedContent} />}
+            </div>
+          </div>
+        )}
+
+
 
         {comparedData && <AnalysisDashboard data={comparedData} />}
       </div>
