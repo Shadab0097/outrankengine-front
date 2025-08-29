@@ -491,78 +491,76 @@ function URLAnalyzer() {
 
   const deepSeekContentCreation = async (contentCreationData) => {
 
-    const prompt = `You are an expert SEO content strategist with 20+ years of experience in outranking competitors. Analyze the competitor data and create a comprehensive, keyword-optimized content strategy designed to dominate search results.
+    const prompt = `You are a highly experienced SEO content strategist with over 20 years of expertise in creating keyword-optimized and competitor-beating content strategies.
 
-**COMPETITOR ANALYSIS DATA:**
+Here is the competitor analysis data in JSON format:
 ${JSON.stringify(contentCreationData, null, 2)}
 
-**YOUR MISSION:**
-Create highly SEO-efficient content that WILL outrank the competitor by exploiting their weaknesses and capitalizing on ALL keyword opportunities in the data.
+Your task is to generate a detailed and comprehensive SEO content strategy designed to outrank competitors by leveraging every keyword opportunity, exploiting competitor weaknesses, and fulfilling user search intent.
 
-**REQUIRED JSON OUTPUT:**
-Return a valid JSON object with this exact structure:
+Please respond ONLY with a valid JSON object matching this exact structure and naming conventions:
 
 {
   "seoOptimizedH1Tags": [
     {
-      "tag": "Keyword-rich H1 targeting primary keywords from data",
+      "tag": "Primary keyword-rich H1 tag",
       "targetKeywords": ["keyword1", "keyword2"],
-      "competitorWeaknessExploited": "Specific weakness this H1 addresses",
-      "searchIntent": "informational/transactional/navigational"
+      "competitorWeaknessExploited": "Specific competitor weakness addressed",
+      "searchIntent": "informational|transactional|navigational"
     }
   ],
   "keywordOptimizedH2Tags": [
     {
-      "h2Tag": "H2 targeting long-tail keywords from data", 
-      "parentH1": "Which H1 this belongs to",
-      "keywordDensity": "Primary keyword phrase",
-      "contentGapFilled": "Gap this H2 addresses"
+      "h2Tag": "Long-tail keyword focused H2 tag",
+      "parentH1": "Parent H1 tag this belongs to",
+      "keywordDensity": "Targeted primary keyword phrase",
+      "contentGapFilled": "Gap in competitor content addressed"
     }
   ],
   "pillarContentStrategy": {
     "mainPillarPage": {
-      "title": "Ultimate pillar page title with primary keyword",
-      "targetKeyword": "Main keyword from primary keywords array",
+      "title": "SEO-optimized pillar page title with primary keyword",
+      "targetKeyword": "Main targeted keyword",
       "wordCount": "3000+",
-      "h1Tag": "SEO-optimized H1",
+      "h1Tag": "SEO optimized H1 tag",
       "h2Structure": [
         {
           "h2": "Section targeting competitor content gap",
-          "keywords": ["semantic keywords to include"],
+          "keywords": ["semantic keyword1", "semantic keyword2"],
           "h3Subsections": ["Subsection 1", "Subsection 2"]
         }
       ],
       "seoFeatures": {
-        "metaDescription": "155-character meta description with target keyword",
+        "metaDescription": "Meta description under 160 characters including target keyword",
         "focusKeyphrase": "Primary keyword phrase",
         "relatedKeywords": ["related keyword 1", "related keyword 2"],
-        "internalLinks": ["page1", "page2"],
-        "externalAuthorityLinks": ["authoritative source 1"]
+        "internalLinks": ["related-page-1", "related-page-2"],
+        "externalAuthorityLinks": ["authoritative-source-url"]
       }
     }
   },
   "highConversionBlogPosts": [
     {
-      "postTitle": "Compelling blog title with long-tail keyword",
+      "postTitle": "Engaging blog post title with long-tail keyword",
       "targetKeyword": "Specific keyword from data",
       "h1Tag": "Blog post H1 tag",
       "h2Outline": [
-        "H2 section 1 with keywords",
-        "H2 section 2 addressing competitor weakness"
+        "H2 section 1 targeting keywords",
+        "H2 section 2 addressing competitor weaknesses"
       ],
-      "metaDescription": "SEO meta description",
+      "metaDescription": "SEO meta description for blog post",
       "estimatedWordCount": "2000+",
-      "contentType": "informational/comparison/how-to guide",
-      "competitorAdvantage": "How this beats competitor content"
+      "contentType": "informational|comparison|how-to guide",
+      "competitorAdvantage": "How this outperforms competitor content"
     }
   ],
   "socialMediaSEOPosts": [
     {
-      "platform": "Platform name",
-      "postContent": "Engaging post content with keywords",
+      "platform": "Social media platform (e.g., Twitter, LinkedIn)",
+      "postContent": "Keyword rich social media post content",
       "hashtags": ["#keyword1", "#keyword2"],
-      "linkToContent": "URL slug targeting keywords",
-      "seoObjective": "Drive traffic to specific page"
+      "linkToContent": "URL slug to SEO content",
+      "seoObjective": "Traffic generation goal"
     }
   ],
   "technicalSEORecommendations": {
@@ -573,32 +571,25 @@ Return a valid JSON object with this exact structure:
     "schemaMarkup": ["FAQ", "Article", "Organization"],
     "featuredSnippetTargets": [
       {
-        "question": "Question from question-based keywords",
-        "answer": "Concise answer for snippet",
-        "targetPage": "Page targeting this snippet"
+        "question": "Question formed from keyword data",
+        "answer": "Concise, snippet-ready answer",
+        "targetPage": "Page URL targeting this snippet"
       }
     ]
   }
 }
 
-**CONTENT GENERATION RULES:**
-1. H1 Tags: Create 12-15 highly targeted H1s using PRIMARY and LONG-TAIL keywords from the data
-2. H2 Tags: Generate 20-25 H2s that support H1s and target SEMANTIC keywords 
-3. Blog Posts: Design 8-10 blog post concepts that address CONTENT GAPS identified
-4. Keywords Integration: Use EVERY keyword opportunity from the JSON data
-5. Competitor Exploitation: Address EVERY weakness mentioned in competitor analysis
-6. Search Intent: Match content to user intent (informational, transactional, navigational)
-7. SEO Efficiency: Optimize for featured snippets, voice search, and mobile-first indexing
+Content Generation Rules:
+- Create 12-15 SEO focused H1 tags targeting all primary and long-tail keywords.
+- Generate 20-25 supporting H2 tags focusing on semantic keyword clusters and content gaps.
+- Design 8-10 blog post concepts addressing specific competitor content weaknesses.
+- Incorporate every keyword opportunity from the competitor data.
+- Match content to user search intent: informational, transactional, or navigational.
+- Optimize for featured snippets, voice search, and mobile-first indexing.
+- Use clear, precise JSON formatting with no explanation or extra text.
 
-**STRATEGIC PRIORITIES:**
-- Target ALL primary keywords with separate H1 tags
-- Address EVERY content gap with dedicated content pieces  
-- Exploit competitor's single-page weakness with multi-page strategy
-- Integrate question-based keywords for featured snippets
-- Use semantic keywords for topical authority
-- Create content for low-competition opportunities
+Return only the JSON object with no additional commentary or formatting.`;
 
-Return ONLY the JSON object with no additional text. Ensure all content is designed to OUTRANK the competitor by being more comprehensive, keyword-optimized, and user-focused than their current strategy.`;
 
     setLoading1(true)
 
@@ -607,26 +598,33 @@ Return ONLY the JSON object with no additional text. Ensure all content is desig
       const deepSeekResults = await axios.post(
         BASE_URL + 'deepseek',
         {
-          messages: [{ role: 'user', content: prompt }],
-          model: "deepseek/deepseek-r1:free",
+          message: [{ role: "user", text: prompt }]
+          // model: "gemini-2.0-flash"
         },
         { withCredentials: true }
       );
-      const match = deepSeekResults?.data?.choices[0]?.message?.content
 
+      let data = deepSeekResults;
+      let parsedData;
+      try {
+        const cleanData = typeof data.data === "string"
+          ? data.data.trim().replace(/^```json|```$/g, "")
+          : data.data;
+        parsedData = typeof cleanData === "string" ? JSON.parse(cleanData) : cleanData;
+      } catch (err) {
+        console.error("Failed to parse Gemini response:", err);
+        parsedData = {};
+      }
 
-      const data = JSON.parse(match)
-
-      setContentCreation(data)
+      console.log("Gemini Content:", parsedData);
+      setContentCreation(parsedData);
     } catch (error) {
-      console.error("DeepSeek API Error:", error);
+      console.error("Gemini-content API Error:", error);
       throw error;
     } finally {
-      setLoading1(false)
+      setLoading1(false);
     }
   };
-
-
 
 
   const handleSubmit = async () => {
@@ -639,7 +637,7 @@ Return ONLY the JSON object with no additional text. Ensure all content is desig
 
     try {
       const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
-      setAnalysisData(response.data.aiInsights); ////// uncomment
+      setAnalysisData(response.data.aiInsights);
       // setContentCreation(response?.data)
       setScrapedContent(response?.data?.scrapedContent)
       saveToHistory(url, response.data.aiInsights);
