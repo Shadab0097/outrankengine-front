@@ -616,7 +616,7 @@ Return only the JSON object with no additional commentary or formatting.`;
         parsedData = {};
       }
 
-      console.log("Gemini Content:", parsedData);
+      // console.log("Gemini Content:", parsedData);
       setContentCreation(parsedData);
     } catch (error) {
       console.error("Gemini-content API Error:", error);
