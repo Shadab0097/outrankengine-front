@@ -633,10 +633,16 @@ Return only the JSON object with no additional commentary or formatting.`;
     setAnalysisData(null);
     scrollToTopSmooth();
     setCompareData(null);
+    setContentCreation(null);
+
 
 
     try {
       const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
+      if (response.status === 429) {
+        setError("Too Many requests! PLease slow down");
+      }
+
       setAnalysisData(response.data.aiInsights);
       // setContentCreation(response?.data)
       setScrapedContent(response?.data?.scrapedContent)
@@ -674,10 +680,16 @@ Return only the JSON object with no additional commentary or formatting.`;
     setAnalysisData(null);
     scrollToTopSmooth();
     setCompareData(null);
+    setContentCreation(null);
+
+
 
     try {
       const response = await axios.post(BASE_URL + "compare", { competitorUrl: competitorUrl, ourUrl: yourUrl }, { withCredentials: true });
-      console.log(response?.data);
+      // console.log(response?.data);
+      if (response.status === 429) {
+        setError("Too Many requests! PLease slow down");
+      }
       setCompareData(response?.data);
       saveToHistory(competitorUrl, response?.data?.comparison?.competitorInsights?.analysisSummary?.competitorStrengths);
     } catch (err) {
