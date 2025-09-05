@@ -17,7 +17,9 @@ import {
   FiTrendingUp,
   FiStar,
   FiBarChart2,
-  FiUsers
+  FiUsers,
+  FiImage,
+  FiDatabase
 } from "react-icons/fi";
 import { BASE_URL } from "../utils/constant";
 import Sidebar from "../component/Sidebar";
@@ -30,6 +32,10 @@ import AnalysisDashboard from "../compareComponent/AnalysisDashboard";
 import ContentCreation from "./ContentCreation ";
 import ContentLoader from "./ContentLoader";
 import ScrapedData from "./ScrapedData";
+import ImageGeneration from "./ImageGeneration";
+import ShimmerUI from "./ShimmerUI";
+
+
 
 
 
@@ -40,7 +46,8 @@ const TabNavigation = ({ activeTab, setActiveTab, hasData }) => {
 
   return (
     <div className="container mx-auto px-4 pt-6">
-      <div className="flex space-x-1 bg-white/10 backdrop-blur rounded-xl p-1 border border-white/20 max-w-md mx-auto">
+      <div className="flex flex-wrap sm:flex-nowrap gap-2 bg-white/10 backdrop-blur rounded-xl p-2 border border-white/20 w-full sm:max-w-2xl mx-auto">
+
         <button
           onClick={() => setActiveTab("gemini")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "gemini"
@@ -51,16 +58,7 @@ const TabNavigation = ({ activeTab, setActiveTab, hasData }) => {
           <FiZap className="text-base" />
           Analysis
         </button>
-        <button
-          onClick={() => setActiveTab("deepseek")}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "deepseek"
-            ? "bg-white text-blue-700 shadow-sm"
-            : "text-white/80 hover:text-white hover:bg-white/10"
-            }`}
-        >
-          <FiTarget className="text-base" />
-          Content Creation
-        </button>
+
         <button
           onClick={() => setActiveTab("scraped")}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "scraped"
@@ -70,6 +68,30 @@ const TabNavigation = ({ activeTab, setActiveTab, hasData }) => {
         >
           <FiTarget className="text-base" />
           Data
+        </button>
+
+        <button
+          onClick={() => setActiveTab("deepseek")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "deepseek"
+            ? "bg-white text-blue-700 shadow-sm"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+        >
+          <FiDatabase className="text-base" />
+          Content
+        </button>
+
+
+
+        <button
+          onClick={() => setActiveTab("images")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${activeTab === "images"
+            ? "bg-white text-blue-700 shadow-sm"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+        >
+          <FiImage className="text-base" />
+          Images
         </button>
       </div>
     </div>
@@ -95,6 +117,10 @@ function URLAnalyzer() {
   const [contentCreation, setContentCreation] = useState(null)
   const [loading1, setLoading1] = useState(false)
   const [scrapedContent, setScrapedContent] = useState(null)
+  const [images, setImages] = useState([]);
+  const [loading3, setLoading3] = useState(true)
+
+
 
 
   const processingSteps = useMemo(
@@ -489,6 +515,25 @@ function URLAnalyzer() {
   };
 
 
+
+  const imageGeneration = async (imageData) => {
+    // setLoading3(true)
+    try {
+      const res = await axios.post(BASE_URL + 'imageGeneration', { data: imageData }, { withCredentials: true });
+      if (res.status === 200) {
+
+        setImages(res);
+        // console.log(res)
+      }
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    } finally {
+      setLoading3(false);
+    }
+
+  }
+
+
   const deepSeekContentCreation = async (contentCreationData) => {
 
     const prompt = `You are a highly experienced SEO content strategist with over 20 years of expertise in creating keyword-optimized and competitor-beating content strategies.
@@ -592,6 +637,8 @@ Return only the JSON object with no additional commentary or formatting.`;
 
 
     setLoading1(true)
+    // setLoading3(true)
+
 
 
     try {
@@ -618,11 +665,14 @@ Return only the JSON object with no additional commentary or formatting.`;
 
       // console.log("Gemini Content:", parsedData);
       setContentCreation(parsedData);
+      imageGeneration(parsedData)
     } catch (error) {
       console.error("Gemini-content API Error:", error);
       throw error;
     } finally {
       setLoading1(false);
+      // setLoading3(false)
+
     }
   };
 
@@ -634,6 +684,7 @@ Return only the JSON object with no additional commentary or formatting.`;
     scrollToTopSmooth();
     setCompareData(null);
     setContentCreation(null);
+    setImages(null)
 
 
 
@@ -681,6 +732,8 @@ Return only the JSON object with no additional commentary or formatting.`;
     scrollToTopSmooth();
     setCompareData(null);
     setContentCreation(null);
+    setImages(null)
+
 
 
 
@@ -1036,6 +1089,15 @@ Return only the JSON object with no additional commentary or formatting.`;
           </div>
         )}
 
+        {activeTab === "scraped" && analysisData && (
+          <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
+            <div className="text-center">
+
+              {scrapedContent && <ScrapedData scrapedContent={scrapedContent} />}
+            </div>
+          </div>
+        )}
+
         {/* Analysis Results - DeepSeek Tab (Empty for now) */}
         {activeTab === "deepseek" && analysisData && (
           <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
@@ -1047,14 +1109,22 @@ Return only the JSON object with no additional commentary or formatting.`;
           </div>
         )}
 
-        {activeTab === "scraped" && analysisData && (
+
+        {activeTab === "images" && analysisData && (
           <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
             <div className="text-center">
+              {loading1 ? <><p className="text-center font-bold text-3xl bg-gradient-to-r from-white to-purple-600 bg-clip-text text-transparent">
+                Waiting for Content Creation!
+              </p>
+                <p className="text-center text-lg text-gray-600 mt-2">
+                  Sit tight while we prepare SEO-optimized visuals and text just for you.
+                </p></> : <ShimmerUI isLoading={loading3} />}
 
-              {scrapedContent && <ScrapedData scrapedContent={scrapedContent} />}
+              {images && <ImageGeneration data={images} />}
             </div>
           </div>
         )}
+
 
 
 
