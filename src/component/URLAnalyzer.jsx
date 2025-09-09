@@ -761,7 +761,7 @@ Return only the JSON object with no additional commentary or formatting.`;
     <div className="min-h-screen relative">
       {/* Elegant background */}
       <div className="absolute inset-0 -z-10">
-        <div className="h-full w-full bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900" />
+        <div className="h-full w-full bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900" />
         <div
           className="absolute inset-0 opacity-30"
           style={{

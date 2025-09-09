@@ -102,7 +102,7 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 {/* Header */}
-                <div className="relative bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900 text-white">
+                <div className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900 text-white">
                     <div className="flex items-center justify-between px-6 py-5">
                         <div className="flex items-center gap-3">
                             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-2">
@@ -269,7 +269,7 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-gray-900 text-gray-300">
+                <div className="px-6 py-4 bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900 text-gray-300">
                     <div className="space-y-3">
                         <div className="flex items-center justify-between text-xs">
                             <div className="flex items-center gap-2">
