@@ -529,6 +529,8 @@ function URLAnalyzer() {
       }
     } catch (error) {
       console.error("Error fetching images:", error);
+      setError('The model is overloaded. Please try again later.')
+
     } finally {
       setLoading3(false);
     }
@@ -670,10 +672,11 @@ Return only the JSON object with no additional commentary or formatting.`;
       imageGeneration(parsedData)
     } catch (error) {
       console.error("Gemini-content API Error:", error);
+      setError('The model is overloaded. Please try again later.')
       throw error;
     } finally {
       setLoading1(false);
-      // setLoading3(false)
+      setLoading3(false)
 
     }
   };
