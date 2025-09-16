@@ -673,10 +673,12 @@ Return only the JSON object with no additional commentary or formatting.`;
     } catch (error) {
       console.error("Gemini-content API Error:", error);
       setError('The model is overloaded. Please try again later.')
+      imageGeneration(null)
+
       throw error;
     } finally {
       setLoading1(false);
-      setLoading3(false)
+      // setLoading3(false)
 
     }
   };
