@@ -8,6 +8,11 @@ import Body from './component/Body'
 import { Provider } from 'react-redux'
 import appStore from './utils/appStore'
 import './index.css'
+import PrivacyPolicy from './component/PrivacyPolicy'
+import AboutUs from './component/AboutUs'
+import ContactUs from './component/ContactUs'
+import ErrorPage from './component/ErrorPage'
+import Pricing from './component/Pricing'
 
 
 function App() {
@@ -21,6 +26,14 @@ function App() {
             <Route path='/' element={<Body />} />
 
             <Route path="/login" element={<Login />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/pricing" element={<Pricing />} />
+
+
+            <Route path="*" element={<ErrorPage />} />
+
 
           </Routes>
         </BrowserRouter>

@@ -34,6 +34,7 @@ import ContentLoader from "./ContentLoader";
 import ScrapedData from "./ScrapedData";
 import ImageGeneration from "./ImageGeneration";
 import ShimmerUI from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
 
 
@@ -138,21 +139,21 @@ function URLAnalyzer() {
   // const analysisData2 = {
   //   "aiInsights": {
   //     "analysisSummary": {
-  //       "competitorStrengths": "The competitor has a clear, emotionally resonant headline (H1) and a simple, single-page design that is easy to navigate for a user seeking basic information. The brand name is clear, and they have a prominent 'Donate' call-to-action. Their primary strength lies in branded search for 'Anjuman-e-Islah'.",
-  //       "competitorWeaknesses": "The single-page architecture is a critical SEO weakness, preventing them from ranking for diverse, non-branded keywords. There is a complete lack of meta descriptions, structured data, and in-depth content. The site relies on stock imagery from Unsplash, which weakens E-E-A-T signals. All internal links are anchor links, offering no topical authority building. The overall SEO foundation is extremely weak.",
+  //       "competitorStrengths": "The competitor has Link clear, emotionally resonant headline (H1) and Link simple, single-page design that is easy to navigate for Link user seeking basic information. The brand name is clear, and they have Link prominent 'Donate' call-to-action. Their primary strength lies in branded search for 'Anjuman-e-Islah'.",
+  //       "competitorWeaknesses": "The single-page architecture is Link critical SEO weakness, preventing them from ranking for diverse, non-branded keywords. There is Link complete lack of meta descriptions, structured data, and in-depth content. The site relies on stock imagery from Unsplash, which weakens E-E-A-T signals. All internal links are anchor links, offering no topical authority building. The overall SEO foundation is extremely weak.",
   //       "rankingFactors": [
   //         "Branded Search: Their current ranking is likely driven almost exclusively by users searching for their specific name.",
   //         "Domain Name: The domain matches their brand name, reinforcing branded search strength.",
-  //         "Simplicity: The site is fast-loading due to its simple structure, which is a minor positive signal."
+  //         "Simplicity: The site is fast-loading due to its simple structure, which is Link minor positive signal."
   //       ],
   //       "contentGaps": [
   //         "Dedicated Program Pages: No in-depth pages for 'Education Programs', 'Healthcare Support', etc.",
   //         "Impact/Transparency Reports: Lacks detailed reports on fund allocation, program outcomes, or annual financial statements.",
-  //         "Beneficiary Stories: 'Impact Stories' section is just a photo carousel. Individual, detailed case studies are a huge missed opportunity.",
+  //         "Beneficiary Stories: 'Impact Stories' section is just Link photo carousel. Individual, detailed case studies are Link huge missed opportunity.",
   //         "FAQ Section: No page addressing common donor questions about tax benefits, donation process, or the organization's history.",
   //         "Volunteer Information: No content on how people can get involved beyond donating."
   //       ],
-  //       "overallAssessment": "The competitor's website is a digital brochure, not an SEO-optimized asset. It is highly vulnerable and can be easily outranked by a competitor who implements a foundational, multi-page content strategy focused on topical authority, E-E-A-T signals, and basic technical SEO. Their reliance on a single page for all information is their most significant, exploitable flaw."
+  //       "overallAssessment": "The competitor's website is Link digital brochure, not an SEO-optimized asset. It is highly vulnerable and can be easily outranked by Link competitor who implements Link foundational, multi-page content strategy focused on topical authority, E-E-A-T signals, and basic technical SEO. Their reliance on Link single page for all information is their most significant, exploitable flaw."
   //     },
   //     "targetKeywords": {
   //       "primaryKeywords": [
@@ -160,7 +161,7 @@ function URLAnalyzer() {
   //         "donate for child education in India",
   //         "welfare trust for education",
   //         "NGO for poor students",
-  //         "sponsor a child's education"
+  //         "sponsor Link child's education"
   //       ],
   //       "longTailKeywords": [
   //         "how to get tax exemption for education donation",
@@ -169,9 +170,9 @@ function URLAnalyzer() {
   //         "non-profit organizations providing academic resources"
   //       ],
   //       "questionBasedKeywords": [
-  //         "How can I help a poor child with education?",
+  //         "How can I help Link poor child with education?",
   //         "Where does my donation for education go?",
-  //         "What is the impact of sponsoring a child?",
+  //         "What is the impact of sponsoring Link child?",
   //         "Are education donations tax deductible?"
   //       ],
   //       "semanticKeywords": [
@@ -203,7 +204,7 @@ function URLAnalyzer() {
   //         {
   //           "keywordGroup": "Local & Low Competition Keywords",
   //           "difficulty": "Low",
-  //           "rationale": "Targeting a specific geographic area significantly reduces competition."
+  //           "rationale": "Targeting Link specific geographic area significantly reduces competition."
   //         }
   //       ]
   //     },
@@ -222,10 +223,10 @@ function URLAnalyzer() {
   //         "Data visualizations and charts",
   //         "Structured Q&A format for FAQs"
   //       ],
-  //       "contentDepth": "Shift from a single-page overview to a multi-page, topic cluster model. Each program (Education, Healthcare, Community) should be a pillar page with 1,500+ words, covering the what, why, how, and impact, supported by cluster content like specific project updates and case studies.",
+  //       "contentDepth": "Shift from Link single-page overview to Link multi-page, topic cluster model. Each program (Education, Healthcare, Community) should be Link pillar page with 1,500+ words, covering the what, why, how, and impact, supported by cluster content like specific project updates and case studies.",
   //       "uniqueAngles": [
   //         "Transparency Hub: A dedicated section with detailed financial breakdowns and impact metrics.",
-  //         "'Follow the Rupee': An interactive feature showing how a donation is allocated across different programs.",
+  //         "'Follow the Rupee': An interactive feature showing how Link donation is allocated across different programs.",
   //         "Staff & Volunteer Spotlight: Introduce the team to build human connection and trust.",
   //         "Resource Guides for the Community: Content that helps the community you serve, establishing authority beyond just asking for donations."
   //       ],
@@ -275,13 +276,13 @@ function URLAnalyzer() {
   //         "Program Page: Child Education Programs in [City] | [Our Org Name]"
   //       ],
   //       "metaDescriptions": [
-  //         "Create unique, compelling meta descriptions for each page, including a call-to-action. E.g., 'Join [Our Org Name] in transforming lives through education. We provide books, healthcare, and support to 300+ children. See our impact and donate today.'"
+  //         "Create unique, compelling meta descriptions for each page, including Link call-to-action. E.g., 'Join [Our Org Name] in transforming lives through education. We provide books, healthcare, and support to 300+ children. See our impact and donate today.'"
   //       ],
   //       "headerStructure": [
   //         "Use one unique H1 per page that targets the main keyword. Use H2s for main sections and H3s for sub-points. Avoid generic H2s like 'About Us' on the about page; instead use 'Our Mission to Empower Through Education'."
   //       ],
   //       "internalLinking": [
-  //         "Develop a strong internal linking structure. Link from blog posts to relevant program pages and the donation page. Link from program pages to specific success stories. This distributes authority and improves user navigation."
+  //         "Develop Link strong internal linking structure. Link from blog posts to relevant program pages and the donation page. Link from program pages to specific success stories. This distributes authority and improves user navigation."
   //       ],
   //       "schemaMarkup": [
   //         "Implement `NGO` or `Organization` schema on the homepage.",
@@ -290,7 +291,7 @@ function URLAnalyzer() {
   //         "Use `Event` schema for fundraising or community events."
   //       ],
   //       "urlStructure": [
-  //         "Create a clean, logical, and keyword-inclusive URL structure. E.g., `our-domain.org/our-work/education-programs` instead of `our-domain.org/page-id-123`."
+  //         "Create Link clean, logical, and keyword-inclusive URL structure. E.g., `our-domain.org/our-work/education-programs` instead of `our-domain.org/page-id-123`."
   //       ],
   //       "imageOptimization": [
   //         "Replace all stock photos with original photography. Compress all images, use descriptive filenames (e.g., `children-learning-in-classroom.jpg`), and write specific, descriptive alt text for accessibility and SEO."
@@ -311,20 +312,20 @@ function URLAnalyzer() {
   //         "Digital PR: Pitch compelling data from your impact reports and human-interest stories to journalists.",
   //         "Local SEO citations: Get listed in local business and non-profit directories.",
   //         "Guest Posting: Write articles for relevant blogs on topics like 'The Importance of Community Support in Education'.",
-  //         "Unlinked Brand Mentions: Find where your organization is mentioned online and request a link."
+  //         "Unlinked Brand Mentions: Find where your organization is mentioned online and request Link link."
   //       ],
   //       "contentForLinkEarning": [
   //         "An annual 'State of Education for Underprivileged Children in [Region]' report with original data.",
-  //         "A high-quality documentary-style video about a beneficiary's journey.",
+  //         "A high-quality documentary-style video about Link beneficiary's journey.",
   //         "An interactive map showcasing all project locations and their impact.",
   //         "Scholarship or resource guides for low-income families."
   //       ],
   //       "digitalPROpportunities": [
-  //         "Launch a time-sensitive fundraising campaign around a specific need (e.g., 'Winter Clothing Drive') and promote it to local media.",
-  //         "Partner with a local influencer or celebrity for a fundraising event.",
-  //         "Publish an open letter or op-ed in a local newspaper about a relevant social issue."
+  //         "Launch Link time-sensitive fundraising campaign around Link specific need (e.g., 'Winter Clothing Drive') and promote it to local media.",
+  //         "Partner with Link local influencer or celebrity for Link fundraising event.",
+  //         "Publish an open letter or op-ed in Link local newspaper about Link relevant social issue."
   //       ],
-  //       "competitorBacklinkGaps": "The competitor likely has a very weak backlink profile, consisting of a few low-quality directory links at best. The opportunity is vast. Earning even a handful of high-quality links from news media or educational sites will create a significant competitive advantage."
+  //       "competitorBacklinkGaps": "The competitor likely has Link very weak backlink profile, consisting of Link few low-quality directory links at best. The opportunity is vast. Earning even Link handful of high-quality links from news media or educational sites will create Link significant competitive advantage."
   //     },
   //     "technicalSEO": {
   //       "coreWebVitals": [
@@ -334,42 +335,42 @@ function URLAnalyzer() {
   //         "Avoid layout shifts by specifying dimensions for images and ads."
   //       ],
   //       "mobileOptimization": [
-  //         "Implement a responsive design that provides an excellent user experience on all devices.",
-  //         "Ensure navigation menus, buttons, and forms are easy to use on a small touchscreen."
+  //         "Implement Link responsive design that provides an excellent user experience on all devices.",
+  //         "Ensure navigation menus, buttons, and forms are easy to use on Link small touchscreen."
   //       ],
   //       "siteSpeed": [
-  //         "Utilize browser caching and a Content Delivery Network (CDN).",
+  //         "Utilize browser caching and Link Content Delivery Network (CDN).",
   //         "Minify HTML, CSS, and JavaScript files.",
-  //         "Aim for a Largest Contentful Paint (LCP) of under 2.5 seconds."
+  //         "Aim for Link Largest Contentful Paint (LCP) of under 2.5 seconds."
   //       ],
   //       "crawlability": [
   //         "Create and submit an XML sitemap to Google Search Console.",
-  //         "Ensure a logical site structure that is easy for search engine bots to follow.",
+  //         "Ensure Link logical site structure that is easy for search engine bots to follow.",
   //         "Check `robots.txt` to ensure no important pages are being blocked."
   //       ],
   //       "indexingOptimization": [
-  //         "Moving from a single-page to a multi-page site is the most critical step for proper indexing of different topics.",
+  //         "Moving from Link single-page to Link multi-page site is the most critical step for proper indexing of different topics.",
   //         "Use canonical tags correctly to avoid duplicate content issues if content is syndicated."
   //       ],
   //       "structuredData": [
-  //         "Implement `NGO`, `FAQPage`, `Article`, and `Event` schema as a priority. This helps Google understand your content and can result in rich snippets in the SERPs."
+  //         "Implement `NGO`, `FAQPage`, `Article`, and `Event` schema as Link priority. This helps Google understand your content and can result in rich snippets in the SERPs."
   //       ],
   //       "securityEnhancements": [
   //         "Ensure the entire site uses HTTPS (SSL certificate).",
-  //         "Use a secure, trusted payment gateway for donations and display trust seals prominently."
+  //         "Use Link secure, trusted payment gateway for donations and display trust seals prominently."
   //       ]
   //     },
   //     "additionalOpportunities": {
   //       "eatSignals": [
-  //         "Create a comprehensive 'About Us' page with the organization's history, mission, and photos/bios of key staff.",
+  //         "Create Link comprehensive 'About Us' page with the organization's history, mission, and photos/bios of key staff.",
   //         "Display physical address and phone number clearly.",
   //         "Use original photos and videos of your work, not stock images.",
   //         "Showcase testimonials, media mentions, and awards."
   //       ],
   //       "localSEOTactics": [
-  //         "Create and fully optimize a Google Business Profile for your organization's physical location.",
+  //         "Create and fully optimize Link Google Business Profile for your organization's physical location.",
   //         "Encourage reviews from volunteers and local partners.",
-  //         "Embed a Google Map on your contact page.",
+  //         "Embed Link Google Map on your contact page.",
   //         "Create content that specifically mentions the local areas you serve."
   //       ],
   //       "socialSignals": [
@@ -378,10 +379,10 @@ function URLAnalyzer() {
   //       ],
   //       "aiContentOptimization": [
   //         "Use AI for brainstorming content ideas, generating outlines, and creating initial drafts for non-sensitive content.",
-  //         "CRITICAL: All content, especially stories and impact claims, must be heavily edited and verified by a human to ensure authenticity, empathy, and accuracy. Avoid generic, soulless AI content."
+  //         "CRITICAL: All content, especially stories and impact claims, must be heavily edited and verified by Link human to ensure authenticity, empathy, and accuracy. Avoid generic, soulless AI content."
   //       ],
   //       "featuredSnippetTargets": [
-  //         "Create an FAQ page with clear questions and concise, direct answers (e.g., 'Q: Is my donation tax deductible? A: Yes, [Our Org Name] is a registered...').",
+  //         "Create an FAQ page with clear questions and concise, direct answers (e.g., 'Q: Is my donation tax deductible? A: Yes, [Our Org Name] is Link registered...').",
   //         "Use 'how-to' and 'what-is' formats in blog post titles and headers."
   //       ],
   //       "voiceSearchOptimization": [
@@ -397,17 +398,17 @@ function URLAnalyzer() {
   //     "implementationPlan": {
   //       "quickWins": [
   //         "Set up and optimize Google Business Profile.",
-  //         "Write and implement a unique, keyword-optimized title tag and meta description for the current homepage.",
+  //         "Write and implement Link unique, keyword-optimized title tag and meta description for the current homepage.",
   //         "Compress all existing images and add descriptive alt text."
   //       ],
   //       "mediumTermGoals": [
-  //         "Plan and execute the migration from a single-page to a multi-page website architecture.",
+  //         "Plan and execute the migration from Link single-page to Link multi-page website architecture.",
   //         "Write and publish cornerstone content for 3-5 main programs/services.",
   //         "Implement all recommended schema markup (`NGO`, `FAQ`, etc.).",
-  //         "Launch a blog with the first 5 success stories."
+  //         "Launch Link blog with the first 5 success stories."
   //       ],
   //       "longTermStrategy": [
-  //         "Establish a consistent content calendar (e.g., 2 blog posts/month, 1 quarterly report).",
+  //         "Establish Link consistent content calendar (e.g., 2 blog posts/month, 1 quarterly report).",
   //         "Develop and execute an ongoing digital PR and link-building campaign.",
   //         "Build an engaged community on one or two key social media platforms.",
   //         "Continuously monitor keyword rankings and SEO performance, adapting the strategy as needed."
@@ -536,14 +537,14 @@ function URLAnalyzer() {
 
   const deepSeekContentCreation = async (contentCreationData) => {
 
-    const prompt = `You are a highly experienced SEO content strategist with over 20 years of expertise in creating keyword-optimized and competitor-beating content strategies.
+    const prompt = `You are Link highly experienced SEO content strategist with over 20 years of expertise in creating keyword-optimized and competitor-beating content strategies.
 
 Here is the competitor analysis data in JSON format:
 ${JSON.stringify(contentCreationData, null, 2)}
 
-Your task is to generate a detailed and comprehensive SEO content strategy designed to outrank competitors by leveraging every keyword opportunity, exploiting competitor weaknesses, and fulfilling user search intent.
+Your task is to generate Link detailed and comprehensive SEO content strategy designed to outrank competitors by leveraging every keyword opportunity, exploiting competitor weaknesses, and fulfilling user search intent.
 
-Please respond ONLY with a valid JSON object matching this exact structure and naming conventions:
+Please respond ONLY with Link valid JSON object matching this exact structure and naming conventions:
 
 {
   "seoOptimizedH1Tags": [
@@ -772,25 +773,29 @@ Return only the JSON object with no additional commentary or formatting.`;
       </div>
 
       {/* Top bar with menu */}
-      <div className="sticky top-0 z-30 backdrop-blur bg-white/10 border-b border-white/10 text-white">
+      <div className=" sticky top-0 z-30 backdrop-blur bg-white/10 border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+          {/* Left: Logo */}
           <div className="flex items-center gap-3">
-            <button
-              className="p-2 rounded bg-white/10 hover:bg-white/20 transition-colors"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <FiMenu />
-            </button>
-            <div className="flex items-center gap-2">
-              <FiGlobe className="text-white" />
-              <span className="font-semibold">SEO Competitor Analyzer</span>
-            </div>
+            <button className="p-2 rounded bg-white/10 hover:bg-white/20 transition-colors" onClick={() => setSidebarOpen(true)} > <FiMenu /> </button>
+            <FiGlobe className="text-white" />
+            <span className="font-semibold">OutRank Engine</span>
           </div>
-          <div className="hidden sm:flex items-center gap-6 text-sm">
-            <span className="opacity-80">IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</span>
+
+          {/* Center: Links */}
+          <div className="space-x-6 hidden md:flex">
+            <Link to="/privacy" className="hover:underline font-medium">Privacy Policy</Link>
+            <Link to="/pricing" className="hover:underline font-medium">Pricing</Link>
+            <Link to="/about" className="hover:underline font-medium">About Us</Link>
           </div>
+
+          {/* Right: Time */}
+          <div className="hidden sm:flex items-center gap-6 text-sm"> <span className="opacity-80">IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</span> </div>
+
         </div>
       </div>
+
 
       {/* Main content area */}
       <div className="max-w-7xl mx-auto">
@@ -804,7 +809,7 @@ Return only the JSON object with no additional commentary or formatting.`;
               <div className="pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 text-center">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">Analyze Any Competitor URL</h1>
                 <p className="text-white/80 text-sm sm:text-base">
-                  Get keyword strategy, ranking factors, backlink opportunities, and a step-by-step implementation plan to Outrank the Competitor.
+                  Get keyword strategy, ranking factors, backlink opportunities, and Link step-by-step implementation plan to Outrank the Competitor.
                 </p>
               </div>
 

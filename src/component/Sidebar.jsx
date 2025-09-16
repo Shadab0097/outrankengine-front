@@ -282,9 +282,31 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                             </div>
                         </div>
 
+
+                        <div className="flex items-center sm:hidden flex-col ">
+
+                            <Link to="/privacy" className="hover:underline font-medium">Privacy Policy</Link>
+                            <Link to="/pricing" className="hover:underline font-medium">Pricing</Link>
+                            <Link to="/about" className="hover:underline font-medium">About Us</Link>
+                            <Link to="/contact" className="hover:underline font-medium">Contact Us</Link>
+
+                        </div>
+
+                        <div className=" hidden text-center sm:flex">
+                            <p>
+                                Contact for more information:{" "}
+                                <a
+                                    href="mailto:shadabkhan2910@gmail.com"
+                                    className="text-blue-400 hover:underline"
+                                >
+                                    shadabkhan2910@gmail.com
+                                </a>
+                            </p>
+                        </div>
+
                         <div className="flex items-center justify-between text-xs border-t border-gray-700 pt-3">
                             <div>
-                                <p className="text-gray-400">© 2025 SEO Analyzer</p>
+                                <p className="text-gray-400">© 2025 OutRank Engine</p>
                                 <p className="text-gray-500">v2.1.0</p>
                             </div>
                             <div className="flex gap-3">
@@ -295,18 +317,6 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                                     <FiShield className="text-sm" />
                                 </button>
                             </div>
-                        </div>
-
-                        <div className="text-center">
-                            <p>
-                                Contact for more information:{" "}
-                                <a
-                                    href="mailto:shadabkhan2910@gmail.com"
-                                    className="text-blue-400 hover:underline"
-                                >
-                                    shadabkhan2910@gmail.com
-                                </a>
-                            </p>
                         </div>
                     </div>
                 </div>
