@@ -35,6 +35,7 @@ import ScrapedData from "./ScrapedData";
 import ImageGeneration from "./ImageGeneration";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 
@@ -773,28 +774,30 @@ Return only the JSON object with no additional commentary or formatting.`;
       </div>
 
       {/* Top bar with menu */}
-      <div className=" sticky top-0 z-30 backdrop-blur bg-white/10 border-b border-white/10 text-white">
+      <div className=" sticky top-0 z-30 backdrop-blur bg-white border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-          {/* Left: Logo */}
+
           <div className="flex items-center gap-3">
-            <button className="p-2 rounded bg-white/10 hover:bg-white/20 transition-colors" onClick={() => setSidebarOpen(true)} > <FiMenu /> </button>
-            <FiGlobe className="text-white" />
-            <span className="font-semibold">OutRank Engine</span>
+            <button className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors" onClick={() => setSidebarOpen(true)} > <FiMenu /> </button>
+            {/* <FiGlobe className="text-gray-800 size-6" /> */}
+            <img className="w-12 h-12" src="outranklogo.png" />
+            <span className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">OutRank Engine</span>
           </div>
 
-          {/* Center: Links */}
+
           <div className="space-x-6 hidden md:flex">
-            <Link to="/privacy" className="hover:underline font-medium">Privacy Policy</Link>
-            <Link to="/pricing" className="hover:underline font-medium">Pricing</Link>
-            <Link to="/about" className="hover:underline font-medium">About Us</Link>
+            <Link to="/privacy" className="px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition">Privacy Policy</Link>
+            <Link to="/pricing" className="px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition">Pricing</Link>
+            <Link to="/about" className="px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition">About Us</Link>
           </div>
 
-          {/* Right: Time */}
-          <div className="hidden sm:flex items-center gap-6 text-sm"> <span className="opacity-80">IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</span> </div>
+
+          <div className="hidden sm:flex items-center gap-6 text-sm text-gray-900"> <span className="opacity-80">IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</span> </div>
 
         </div>
       </div>
+
 
 
       {/* Main content area */}

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import URLAnalyzer from "./URLAnalyzer"
 import { addUser } from "../utils/userSlice"
+import Navbar from "./Navbar"
 
 
 const Body = () => {
@@ -91,7 +92,7 @@ const Body = () => {
 
     return (
         <>
-
+            {/* <Navbar /> */}
             <URLAnalyzer />
         </>
     )
