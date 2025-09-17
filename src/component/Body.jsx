@@ -93,7 +93,8 @@ const Body = () => {
     return (
         <>
             {/* <Navbar /> */}
-            <URLAnalyzer />
+            {/* <URLAnalyzer /> */}
+            <Outlet />
         </>
     )
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FiGlobe,
   FiSearch,
@@ -36,6 +36,7 @@ import ImageGeneration from "./ImageGeneration";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import Loader from "./Loader";
 
 
 
@@ -109,7 +110,7 @@ function URLAnalyzer() {
   const [error, setError] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [history, setHistory] = useState([]);
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  // const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [isComparable, setIsComparable] = useState(false);
   const [analysisType, setAnalysisType] = useState("seo");
   const [competitorUrl, setCompetitorUrl] = useState("");
@@ -125,18 +126,18 @@ function URLAnalyzer() {
 
 
 
-  const processingSteps = useMemo(
-    () => [
-      { icon: FiSearch, text: "Fetching page and scraping visible content" },
-      { icon: FiTool, text: "Parsing HTML, meta tags, and structured data" },
-      { icon: FiTarget, text: "Extracting target keywords and intent" },
-      { icon: FiLink, text: "Analyzing backlinks and referring domains" },
-      { icon: FiSettings, text: "Checking technical SEO and Core Web Vitals" },
-      { icon: FiFileText, text: "Evaluating content depth and gaps" },
-      { icon: FiTrendingUp, text: "Building strategy insights and roadmap" }
-    ],
-    []
-  );
+  // const processingSteps = useMemo(
+  //   () => [
+  //     { icon: FiSearch, text: "Fetching page and scraping visible content" },
+  //     { icon: FiTool, text: "Parsing HTML, meta tags, and structured data" },
+  //     { icon: FiTarget, text: "Extracting target keywords and intent" },
+  //     { icon: FiLink, text: "Analyzing backlinks and referring domains" },
+  //     { icon: FiSettings, text: "Checking technical SEO and Core Web Vitals" },
+  //     { icon: FiFileText, text: "Evaluating content depth and gaps" },
+  //     { icon: FiTrendingUp, text: "Building strategy insights and roadmap" }
+  //   ],
+  //   []
+  // );
   // const analysisData2 = {
   //   "aiInsights": {
   //     "analysisSummary": {
@@ -479,19 +480,19 @@ function URLAnalyzer() {
     }
   }, []);
 
-  useEffect(() => {
-    if (!loading) {
-      setActiveStepIndex(0);
-      return;
-    }
-    let i = 0;
-    setActiveStepIndex(0);
-    const interval = setInterval(() => {
-      i = (i + 1) % processingSteps.length;
-      setActiveStepIndex(i);
-    }, 1400);
-    return () => clearInterval(interval);
-  }, [loading, processingSteps.length]);
+  // useEffect(() => {
+  //   if (!loading) {
+  //     setActiveStepIndex(0);
+  //     return;
+  //   }
+  //   let i = 0;
+  //   setActiveStepIndex(0);
+  //   const interval = setInterval(() => {
+  //     i = (i + 1) % processingSteps.length;
+  //     setActiveStepIndex(i);
+  //   }, 1400);
+  //   return () => clearInterval(interval);
+  // }, [loading, processingSteps.length]);
 
   const saveToHistory = (urlValue, responseSample) => {
     const entry = {
@@ -684,43 +685,106 @@ Return only the JSON object with no additional commentary or formatting.`;
   };
 
 
+  // const handleSubmit = async () => {
+  //   setLoading(true);
+  //   setError("");
+  //   setAnalysisData(null);
+  //   scrollToTopSmooth();
+  //   setCompareData(null);
+  //   setContentCreation(null);
+  //   setImages(null)
+
+
+
+  //   try {
+  //     const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
+  //     if (response.status === 429) {
+  //       setError("Too Many requests! PLease slow down");
+  //     }
+  //     console.log(response)
+  //     setAnalysisData(response.data.aiInsights);
+  //     // setContentCreation(response?.data)
+  //     setScrapedContent(response?.data?.scrapedContent)
+  //     saveToHistory(url, response.data.aiInsights);
+  //     if (response.status === 200) {
+  //       deepSeekContentCreation(response?.data)
+
+  //     }
+  //   } catch (err) {
+  //     if (err.response?.data?.error) {
+  //       setError("Error" + ' ' + err.response?.data?.error);
+  //     } else {
+  //       setError("Failed To Analyze URL! Please Try Again Later");
+  //     }
+  //     console.error(err);
+  //   } finally {
+  //     setLoading(false);
+
+  //   }
+  // };
+
+  const controllerRef = useRef(null);
+
   const handleSubmit = async () => {
+    if (controllerRef.current) {
+      controllerRef.current.abort(); // Cancel previous request
+    }
+
+    const controller = new AbortController();
+    controllerRef.current = controller;
+
     setLoading(true);
     setError("");
     setAnalysisData(null);
     scrollToTopSmooth();
     setCompareData(null);
     setContentCreation(null);
-    setImages(null)
-
-
+    setImages(null);
 
     try {
-      const response = await axios.post(BASE_URL + "analyze", { competitorUrl: url }, { withCredentials: true });
+      const response = await axios.post(
+        BASE_URL + "analyze",
+        { competitorUrl: url },
+        { withCredentials: true, signal: controller.signal }
+      );
+
       if (response.status === 429) {
-        setError("Too Many requests! PLease slow down");
+        setError("Too Many requests! Please slow down");
       }
 
       setAnalysisData(response.data.aiInsights);
-      // setContentCreation(response?.data)
-      setScrapedContent(response?.data?.scrapedContent)
+      setScrapedContent(response?.data?.scrapedContent);
       saveToHistory(url, response.data.aiInsights);
-      if (response.status === 200) {
-        deepSeekContentCreation(response?.data)
 
+      if (response.status === 200) {
+        deepSeekContentCreation(response?.data);
       }
     } catch (err) {
-      if (err.response?.data?.error) {
-        setError("Error" + ' ' + err.response?.data?.error);
+      if (axios.isCancel(err)) {
+        console.log("Request canceled");
+        setError("Request canceled! Please don't leave the page. ");
+        alert("Request canceled! Please don't leave the page. ")
+
+      } else if (err.response?.data?.error) {
+        setError("Error: " + err.response?.data?.error);
       } else {
         setError("Failed To Analyze URL! Please Try Again Later");
       }
       console.error(err);
     } finally {
       setLoading(false);
-
+      controllerRef.current = null;
     }
   };
+
+  useEffect(() => {
+    // Cleanup when component unmounts
+    return () => {
+      if (controllerRef.current) {
+        controllerRef.current.abort();
+      }
+    };
+  }, []);
 
   const handleAnalysisType = (e) => {
     setAnalysisType(e.target.value);
@@ -763,7 +827,6 @@ Return only the JSON object with no additional commentary or formatting.`;
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen relative">
       {/* Elegant background */}
@@ -785,7 +848,7 @@ Return only the JSON object with no additional commentary or formatting.`;
 
           <div className="flex items-center gap-3">
             <button className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors" onClick={() => setSidebarOpen(true)} > <FiMenu /> </button>
-            {/* <FiGlobe className="text-gray-800 size-6" /> */}
+
             <img className="w-12 h-12" src="outranklogo.png" />
             <span className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">OutRank Engine</span>
           </div>
@@ -882,7 +945,7 @@ Return only the JSON object with no additional commentary or formatting.`;
             </form>
 
             {/* Processing steps banner when loading */}
-            {loading && (
+            {/* {loading && (
               <div className="max-w-4xl mx-auto px-4 mt-6">
                 <div className="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-4">
                   <p className="text-white font-semibold mb-3 flex items-center gap-2">
@@ -914,7 +977,8 @@ Return only the JSON object with no additional commentary or formatting.`;
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
+            <Loader loading={loading} />
           </div>
         </div>
 
