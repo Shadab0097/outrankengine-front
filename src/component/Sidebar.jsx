@@ -236,13 +236,13 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                             <p className="text-sm font-medium text-gray-700 text-center">Get started with SEO analysis</p>
                             <div className="grid grid-cols-2 gap-2">
                                 <Link to="/login">
-                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-medium transition-colors duration-200">
+                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-medium transition-colors duration-200" onClick={() => onClose()}>
                                         <FiLogIn className="text-sm" />
                                         Login
                                     </button>
                                 </Link>
-                                <Link to='/signup'>
-                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-medium transition-colors duration-200">
+                                <Link to='/login'>
+                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-medium transition-colors duration-200" onClick={() => onClose()}>
                                         <FiUserPlus className="text-sm" />
                                         Sign Up
                                     </button>
@@ -283,14 +283,14 @@ const Sidebar = ({ isOpen, onClose, history, setHistory, setUrl, scrollToTopSmoo
                         </div>
 
 
-                        <div className="flex items-center sm:hidden flex-col ">
+                        {/* <div className="flex items-center sm:hidden flex-col ">
 
                             <Link to="/privacy" className="hover:underline font-medium">Privacy Policy</Link>
                             <Link to="/pricing" className="hover:underline font-medium">Pricing</Link>
                             <Link to="/about" className="hover:underline font-medium">About Us</Link>
                             <Link to="/contact" className="hover:underline font-medium">Contact Us</Link>
 
-                        </div>
+                        </div> */}
 
                         <div className=" hidden text-center sm:flex">
                             <p>

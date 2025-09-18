@@ -2,10 +2,22 @@ import React from 'react';
 import { Settings, FileText, Link2, Image, Code, Search, Globe, CheckCircle } from 'lucide-react';
 
 const OnPageSEO = ({ data }) => {
+
+
+    if (!data?.comparison) {
+        return (
+            <div className="bg-gray-50 text-gray-600 p-6 rounded-2xl border">
+                On-Page SEO data is not available for this analysis.
+            </div>
+        );
+    }
+
+
     const competitorSEO = data?.comparison?.competitorInsights?.onPageSEOSuggestions;
     const ourSEO = data?.comparison?.ourInsights?.onPageSEOSuggestions;
 
     const SEOSection = ({ title, items, icon: Icon, bgColor, textColor }) => (
+
         <div className={`${bgColor} rounded-2xl p-6 border border-opacity-50 shadow-lg`}>
             <div className="flex items-center mb-4">
                 <div className="bg-white/50 backdrop-blur-sm rounded-xl p-3 mr-4 shadow-md">

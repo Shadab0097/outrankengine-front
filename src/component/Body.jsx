@@ -9,6 +9,7 @@ import { useEffect } from "react"
 import URLAnalyzer from "./URLAnalyzer"
 import { addUser } from "../utils/userSlice"
 import Navbar from "./Navbar"
+import StaticPagesTab from "./StaticPagesTab"
 
 
 const Body = () => {
@@ -92,9 +93,10 @@ const Body = () => {
 
     return (
         <>
-            {/* <Navbar /> */}
-            {/* <URLAnalyzer /> */}
-            <Outlet />
+
+
+            <StaticPagesTab />
+
         </>
     )
 }

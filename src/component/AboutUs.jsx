@@ -1,9 +1,12 @@
+import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 
 export default function AboutUs() {
+    const loggedInUser = useSelector(store => store.user)
+
     return (
         <>
-            <Navbar />
+            {!loggedInUser && <Navbar />}
             <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 py-10 px-4 sm:px-6 lg:px-8 pt-24">
                 <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6 sm:p-10 space-y-6 text-center">
 

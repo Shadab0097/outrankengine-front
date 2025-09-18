@@ -23,14 +23,14 @@ function App() {
       <Provider store={appStore}>
         <BrowserRouter basename="/">
           <Routes>
-            <Route path="/" element={<Body />}>
-              <Route index element={<URLAnalyzer />} />
-              <Route path="login" element={<Login />} />
-              <Route path="privacy" element={<PrivacyPolicy />} />
-              <Route path="about" element={<AboutUs />} />
-              <Route path="contact" element={<ContactUs />} />
-              <Route path="pricing" element={<Pricing />} />
-            </Route>
+            <Route path="/" element={<Body />} />
+            {/* <Route index element={<URLAnalyzer />} /> */}
+            <Route path="/login" element={<Login />} />
+            <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="about" element={<AboutUs />} />
+            <Route path="contact" element={<ContactUs />} />
+            <Route path="pricing" element={<Pricing />} />
+
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
