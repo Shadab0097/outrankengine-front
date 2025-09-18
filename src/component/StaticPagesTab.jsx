@@ -178,7 +178,7 @@
 
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { FiInfo, FiMail, FiDollarSign, FiHome, FiMenu, FiSearch, FiTool, FiTarget, FiLink, FiSettings, FiFileText, FiTrendingUp, FiLock } from 'react-icons/fi';
+import { FiInfo, FiMail, FiDollarSign, FiHome, FiMenu, FiSearch, FiTool, FiTarget, FiLink, FiSettings, FiFileText, FiTrendingUp, FiLock, FiMeh } from 'react-icons/fi';
 import axios from 'axios';
 // import { BASEURL } from '../utils/constant';
 import AboutUs from './AboutUs';
@@ -188,6 +188,9 @@ import URLAnalyzer from './URLAnalyzer';
 import Sidebar from '../component/Sidebar';
 import { BASE_URL } from '../utils/constant';
 import PrivacyPolicy from './PrivacyPolicy';
+import { BeakerIcon, MenuIcon, SidebarOpenIcon } from 'lucide-react';
+import { HiMenuAlt1 } from 'react-icons/hi';
+import { PiTabs } from 'react-icons/pi';
 
 const StaticPagesTab = () => {
     const [activeTab, setActiveTab] = useState('home');
@@ -223,6 +226,7 @@ const StaticPagesTab = () => {
     //     { icon: FiFileText, text: 'Evaluating content depth and gaps' },
     //     { icon: FiTrendingUp, text: 'Building strategy insights and roadmap' }
     // ], []);
+
 
     const tabs = [
         { id: 'home', label: 'Home', icon: FiHome },
@@ -577,69 +581,171 @@ const StaticPagesTab = () => {
         }
     };
 
-    const TabNavigation = () => (
-        <div className="sticky top-0 z-30 backdrop-blur bg-white border-b border-white/10 text-white">
-            <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    // const TabNavigation = () => (
 
-                {/* Left side - Logo and Brand */}
-                <div className="flex items-center gap-3">
-                    <button
-                        className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors"
-                        onClick={() => setSidebarOpen(true)}
-                    >
-                        <FiMenu />
-                    </button>
-                    <img className="w-12 h-12" src="outranklogo.png" alt="OutRank Engine" />
-                    <span className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">
-                        OutRank Engine
-                    </span>
-                </div>
 
-                {/* Center - Tab Navigation */}
-                <div className="space-x-6 hidden md:flex">
-                    {tabs.map(tab => {
-                        const Icon = tab.icon;
-                        return (
+    //     <div className="sticky top-0 z-30 backdrop-blur bg-white border-b border-white/10 text-white">
+    //         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+    //             {/* Left side - Logo and Brand */}
+    //             <div className="flex items-center gap-3">
+    //                 <button
+    //                     className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors"
+    //                     onClick={() => setSidebarOpen(true)}
+    //                 >
+    //                     <FiMenu />
+    //                 </button>
+    //                 <img className="w-12 h-12" src="outranklogo.png" alt="OutRank Engine" />
+    //                 <span className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">
+    //                     OutRank Engine
+    //                 </span>
+    //             </div>
+
+    //             {/* Center - Tab Navigation */}
+    //             <div className="space-x-6 hidden md:flex">
+    //                 {tabs.map(tab => {
+    //                     const Icon = tab.icon;
+    //                     return (
+    //                         <button
+    //                             key={tab.id}
+    //                             onClick={() => setActiveTab(tab.id)}
+    //                             className={`px-4 py-2 text-sm font-medium transition flex items-center gap-2 ${activeTab === tab.id
+    //                                 ? 'text-indigo-600 border-b-2 border-indigo-600'
+    //                                 : 'text-gray-800 hover:text-indigo-600'
+    //                                 }`}
+    //                         >
+    //                             <Icon className="text-base" />
+    //                             {tab.label}
+    //                         </button>
+    //                     );
+    //                 })}
+    //             </div>
+
+    //             {/* Mobile Tab Menu */}
+    //             <div className="md:hidden">
+    //                 <select
+    //                     value={activeTab}
+    //                     onChange={(e) => setActiveTab(e.target.value)}
+    //                     className="bg-gray-700 text-white px-3 py-2 rounded border border-gray-600 text-sm"
+    //                 >
+    //                     {tabs.map(tab => (
+    //                         <option key={tab.id} value={tab.id}>
+    //                             {tab.label}
+    //                         </option>
+    //                     ))}
+    //                 </select>
+    //             </div>
+
+    //             {/* Right side - IST Time */}
+    //             <div className="hidden sm:flex items-center gap-6 text-sm text-gray-900">
+    //                 <span className="opacity-80">
+    //                     IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
+    //                 </span>
+    //             </div>
+
+    //         </div>
+    //     </div>
+    // );
+    const TabNavigation = () => {
+        const [showMobileTabMenu, setShowMobileTabMenu] = useState(false);
+
+        return (
+            <div className="sticky top-0 z-30 backdrop-blur bg-white border-b border-white/10 text-white">
+                <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+                    {/* Left side - Logo and Brand */}
+                    <div className="flex items-center gap-3">
+                        <button
+                            className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors"
+                            onClick={() => setSidebarOpen(true)}
+                        >
+                            <SidebarOpenIcon />
+
+                        </button>
+                        <img className="w-12 h-12" src="outranklogo.png" alt="OutRank Engine" />
+                        <span className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">
+                            OutRank Engine
+                        </span>
+                    </div>
+
+                    {/* Center - Tab Navigation (Desktop) */}
+                    <div className="space-x-6 hidden md:flex">
+                        {tabs.map(tab => {
+                            const Icon = tab.icon;
+                            return (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`px-4 py-2 text-sm font-medium transition flex items-center gap-2 ${activeTab === tab.id
+                                        ? 'text-indigo-600 border-b-2 border-indigo-600'
+                                        : 'text-gray-800 hover:text-indigo-600'
+                                        }`}
+                                >
+                                    <Icon className="text-base" />
+                                    {tab.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Right side - IST Time and Mobile Tab Menu */}
+                    <div className="flex items-center gap-3">
+                        {/* IST Time */}
+                        <div className="hidden sm:flex items-center gap-6 text-sm text-gray-900">
+                            <span className="opacity-80">
+                                IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
+                            </span>
+                        </div>
+
+                        {/* Mobile Tab Hamburger Menu */}
+                        <div className="md:hidden relative">
                             <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`px-4 py-2 text-sm font-medium transition flex items-center gap-2 ${activeTab === tab.id
-                                    ? 'text-indigo-600 border-b-2 border-indigo-600'
-                                    : 'text-gray-800 hover:text-indigo-600'
-                                    }`}
+                                className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors"
+                                onClick={() => setShowMobileTabMenu(!showMobileTabMenu)}
                             >
-                                <Icon className="text-base" />
-                                {tab.label}
+                                <MenuIcon />
                             </button>
-                        );
-                    })}
+
+                            {/* Mobile Tab Dropdown */}
+                            {showMobileTabMenu && (
+                                <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                                    {tabs.map(tab => {
+                                        const Icon = tab.icon;
+                                        return (
+                                            <button
+                                                key={tab.id}
+                                                onClick={() => {
+                                                    setActiveTab(tab.id);
+                                                    setShowMobileTabMenu(false);
+                                                }}
+                                                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition hover:bg-gray-50 ${activeTab === tab.id
+                                                    ? 'text-indigo-600 bg-indigo-50 border-r-2 border-indigo-600'
+                                                    : 'text-gray-800'
+                                                    }`}
+                                            >
+                                                <Icon className="text-base" />
+                                                {tab.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Mobile Tab Menu */}
-                <div className="md:hidden">
-                    <select
-                        value={activeTab}
-                        onChange={(e) => setActiveTab(e.target.value)}
-                        className="bg-gray-700 text-white px-3 py-2 rounded border border-gray-600 text-sm"
-                    >
-                        {tabs.map(tab => (
-                            <option key={tab.id} value={tab.id}>
-                                {tab.label}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-
-                {/* Right side - IST Time */}
-                <div className="hidden sm:flex items-center gap-6 text-sm text-gray-900">
-                    <span className="opacity-80">
-                        IST: {new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
-                    </span>
-                </div>
-
+                {/* Click outside to close mobile menu */}
+                {showMobileTabMenu && (
+                    <div
+                        className="fixed inset-0 z-40"
+                        onClick={() => setShowMobileTabMenu(false)}
+                    />
+                )}
             </div>
-        </div>
-    );
+        );
+    };
+
+
 
     const renderTabContent = () => {
         switch (activeTab) {
