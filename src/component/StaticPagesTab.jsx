@@ -531,7 +531,7 @@ const StaticPagesTab = () => {
                 // 3. Pass the signal to the axios request
                 { withCredentials: true, signal: controller.signal }
             );
-            console.log(response)
+            // console.log(response)
 
             if (response.status === 429) {
                 setError("Too Many requests! Please slow down");
