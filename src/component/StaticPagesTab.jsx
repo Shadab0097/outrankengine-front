@@ -214,6 +214,7 @@ const StaticPagesTab = () => {
     const [scrapedContent, setScrapedContent] = useState(null);
     const [images, setImages] = useState(null);
     const [loading3, setLoading3] = useState(true);
+    const [retryContent, setRetryContent] = useState(false)
     const controllerRef = useRef(null);
 
     // Processing steps for URLAnalyzer
@@ -300,7 +301,7 @@ const StaticPagesTab = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const imageGeneration = async (imageData, controller) => {
+    const imageGeneration = async (imageData, controller, retryCount = 0) => {
 
         setLoading3(true)
         // setLoading3(true);
@@ -312,6 +313,15 @@ const StaticPagesTab = () => {
                 }
                 // Don't need to return anything here, this is the end of the success chain
             })
+            .catch((err) => {
+                if (err.response?.status >= 400 && retryCount < 1) {
+                    console.log("Retrying Image Generation after 5 seconds... ", err);
+
+                    return new Promise((resolve) => setTimeout(resolve, 5000))
+                        .then(() => imageGeneration(imageData, controller, retryCount + 1));
+                }
+                throw err;
+            })
             // No .catch() block needed, we want errors to "bubble up" to handleSubmit's catch block
             .finally(() => {
                 setLoading3(false); // Always turn off its own loader
@@ -320,7 +330,7 @@ const StaticPagesTab = () => {
     }
 
 
-    const deepSeekContentCreation = async (contentCreationData, controller) => {
+    const deepSeekContentCreation = async (contentCreationData, controller, retryCount = 0) => {
 
 
         const prompt = `You are Link highly experienced SEO content strategist with over 20 years of expertise in creating keyword-optimized and competitor-beating content strategies.
@@ -440,9 +450,9 @@ const StaticPagesTab = () => {
                     parsedData = typeof cleanData === "string" ? JSON.parse(cleanData) : cleanData;
                 } catch (err) {
                     setLoading3(false)
-
                     console.error("Failed to parse DeepSeek response:", err);
                     // Throwing an error here will cause the main .catch() block in handleSubmit to trigger
+
                     throw new Error("Failed to parse content creation data.");
                 }
 
@@ -452,9 +462,23 @@ const StaticPagesTab = () => {
                 // *** CRITICAL: Call the next function and return its promise ***
                 return imageGeneration(parsedData, controller);
             })
+            .catch((err) => {
+                if (err.response?.status >= 500 && retryCount < 1) {
+                    console.log("Retrying DeepSeek after 6 seconds... ", err);
+                    setRetryContent(true)
+                    setLoading3(false)
+
+
+                    return new Promise((resolve) => setTimeout(resolve, 6000))
+                        .then(() => deepSeekContentCreation(contentCreationData, controller, retryCount + 1));
+                }
+                throw err;
+            })
             // No .catch() here either, let it bubble up
             .finally(() => {
                 setLoading1(false); // Always turn off its own loader
+                setRetryContent(false)
+
             });
     };
 
@@ -801,6 +825,8 @@ const StaticPagesTab = () => {
                         // Flag to tell URLAnalyzer not to render navbar or sidebar
                         hideSidebar={true}
                         hideNavbar={true}
+                        retryContent={retryContent}
+                        setRetryContent={setRetryContent}
                     />
                 );
             case 'about':

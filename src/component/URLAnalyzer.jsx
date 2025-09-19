@@ -125,6 +125,7 @@ function URLAnalyzer({
   handleCompareSubmit,
   handleAnalysisType,
   saveToHistory,
+  retryContent, setRetryContent,
   hideSidebar = false,
   hideNavbar = false
 }) {
@@ -431,6 +432,7 @@ function URLAnalyzer({
             <div className="text-center">
 
               {loading1 && <ContentLoader isLoading={loading1} />}
+              {retryContent && <h1 className="text-center font-bold text-white"> Retrying...please wait</h1>}
               {contentCreation && <ContentCreation data={contentCreation} />}
             </div>
           </div>
