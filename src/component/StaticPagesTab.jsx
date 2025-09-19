@@ -302,7 +302,7 @@ const StaticPagesTab = () => {
 
     const imageGeneration = async (imageData, controller) => {
 
-        // setLoading3(true)
+        setLoading3(true)
         // setLoading3(true);
         // Return the promise so the chain can wait for it to complete
         return axios.post(BASE_URL + 'imageGeneration', { data: imageData }, { withCredentials: true, signal: controller?.signal })
@@ -439,6 +439,8 @@ const StaticPagesTab = () => {
                         : data.data;
                     parsedData = typeof cleanData === "string" ? JSON.parse(cleanData) : cleanData;
                 } catch (err) {
+                    setLoading3(false)
+
                     console.error("Failed to parse DeepSeek response:", err);
                     // Throwing an error here will cause the main .catch() block in handleSubmit to trigger
                     throw new Error("Failed to parse content creation data.");
@@ -654,7 +656,7 @@ const StaticPagesTab = () => {
                 <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
                     {/* Left side - Logo and Brand */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-0.5">
                         <button
                             className="p-2 rounded bg-gray-700 hover:text-indigo-600 transition-colors"
                             onClick={() => setSidebarOpen(true)}
